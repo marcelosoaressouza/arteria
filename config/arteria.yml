@@ -1,0 +1,14 @@
+# config/arteria.yml
+
+defaults: &defaults
+  title:  "Artéria"
+  description: "Artéria Cultura e Cidadania"
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults
