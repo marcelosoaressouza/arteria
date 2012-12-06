@@ -5,9 +5,8 @@
 <table class="table table-striped">
   <thead>
     <tr>
-      <th><%= model_class.human_attribute_name(:id) %></th>
+      <th>#</th>
       <th><%= model_class.human_attribute_name(:title) %></th>
-      <th><%= model_class.human_attribute_name(:slug) %></th>
       <th><%= model_class.human_attribute_name(:content) %></th>
       <th><%= model_class.human_attribute_name(:published) %></th>
       <th><%= model_class.human_attribute_name(:user_id) %></th>
@@ -21,11 +20,10 @@
       <tr>
         <td><%= link_to post.id, post_path(post) %></td>
         <td><%= post.title %></td>
-        <td><%= post.slug %></td>
-        <td><%= post.content %></td>
+        <td><%= truncate(strip_tags(post.content), :length => 1024) %></td>
         <td><%= post.published %></td>
-        <td><%= post.user_id %></td>
-        <td><%= post.license_id %></td>
+        <td><%= post.user.firstname + " " + post.user.lastname %></td>
+        <td><%= post.license.name %></td>
         <td><%=l post.created_at %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),

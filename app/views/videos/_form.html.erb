@@ -1,0 +1,44 @@
+<%= form_for @video, :html => { :class => 'form-horizontal' } do |f| %>
+  <div class="control-group">
+    <%= f.label :title, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :title, :class => 'text_field' %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :description, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :description, :class => 'text_field' %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :published, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.check_box :published, :class => 'check_box' %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :video, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.file_field :video %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :license_id, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.select( :license_id, @licenses.collect { |l| [l.name, l.id] } ) %>
+    </div>
+  </div>
+
+  <%= f.hidden_field :user_id, :value => current_user.id %>
+
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                videos_path, :class => 'btn' %>
+  </div>
+<% end %>

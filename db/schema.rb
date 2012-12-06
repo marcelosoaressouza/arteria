@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121204235419) do
+ActiveRecord::Schema.define(:version => 20121206181650) do
 
   create_table "ckeditor_assets", :force => true do |t|
     t.string   "data_file_name",                  :null => false
@@ -97,6 +97,8 @@ ActiveRecord::Schema.define(:version => 20121204235419) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
+    t.string   "firstname"
+    t.string   "lastname"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
@@ -108,5 +110,23 @@ ActiveRecord::Schema.define(:version => 20121204235419) do
   end
 
   add_index "users_roles", ["user_id", "role_id"], :name => "index_users_roles_on_user_id_and_role_id"
+
+  create_table "videos", :force => true do |t|
+    t.string   "title"
+    t.string   "slug"
+    t.string   "description"
+    t.boolean  "published"
+    t.integer  "user_id"
+    t.integer  "license_id"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+    t.string   "video_file_name"
+    t.string   "video_content_type"
+    t.integer  "video_file_size"
+    t.datetime "video_updated_at"
+  end
+
+  add_index "videos", ["license_id"], :name => "index_videos_on_license_id"
+  add_index "videos", ["user_id"], :name => "index_videos_on_user_id"
 
 end

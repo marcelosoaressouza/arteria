@@ -6,14 +6,12 @@
 <dl class="dl-horizontal">
   <dt><strong><%= model_class.human_attribute_name(:title) %>:</strong></dt>
   <dd><%= @post.title %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:slug) %>:</strong></dt>
-  <dd><%= @post.slug %></dd>
   <dt><strong><%= model_class.human_attribute_name(:content) %>:</strong></dt>
   <dd><%= @post.content.html_safe %></dd>
   <dt><strong><%= model_class.human_attribute_name(:published) %>:</strong></dt>
   <dd><%= @post.published %></dd>
   <dt><strong><%= model_class.human_attribute_name(:user_id) %>:</strong></dt>
-  <dd><%= @post.user.email %></dd>
+  <dd><%= @post.user.firstname + " " + @post.user.lastname %></dd>
   <dt><strong><%= model_class.human_attribute_name(:license_id) %>:</strong></dt>
   <dd><%= @post.license.name %></dd>
 

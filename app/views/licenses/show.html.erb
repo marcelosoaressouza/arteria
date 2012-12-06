@@ -9,7 +9,7 @@
   <dt><strong><%= model_class.human_attribute_name(:description) %>:</strong></dt>
   <dd><%= @license.description %></dd>
   <dt><strong><%= model_class.human_attribute_name(:user_id) %>:</strong></dt>
-  <dd><%= @license.user.email %></dd>
+  <dd><%= @license.user.firstname + " " + @license.user.lastname %></dd>
 </dl>
 
 <div class="form-actions">

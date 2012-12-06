@@ -19,7 +19,7 @@
         <td><%= link_to license.id, license_path(license) %></td>
         <td><%= license.name %></td>
         <td><%= license.description %></td>
-        <td><%= license.user.email %></td>
+        <td><%= license.user.firstname + " " + license.user.lastname %></td>
         <td><%=l license.created_at %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
