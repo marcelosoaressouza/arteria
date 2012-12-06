@@ -21,6 +21,7 @@ gem 'mime-types', :require => 'mime/types'
 gem 'paperclip'
 gem 'paperclip-ffmpeg'
 gem 'rmagick'
+gem 'fancybox2-rails'
 
 # Authentication/Authorization/Roles
 gem 'bcrypt-ruby'

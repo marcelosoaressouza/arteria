@@ -6,4 +6,6 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me, :firstname, :lastname
 
   has_many :licenses, :dependent => :destroy
+  has_many :images, :dependent => :destroy
+  has_many :videos, :dependent => :destroy
 end

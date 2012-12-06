@@ -1,4 +1,7 @@
 Arteria::Application.routes.draw do
+  resources :images
+
+
   resources :videos
 
 

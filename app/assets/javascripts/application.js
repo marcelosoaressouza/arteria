@@ -12,6 +12,16 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require fancybox
 //= require twitter/bootstrap
-//= require_tree .
 //= require ckeditor/init
+//= require_tree .
+
+$(document).ready(function() {
+  $("#image-box").fancybox({
+    closeBtn    : true,
+    closeClick  : true,
+    openEffect  : 'none',
+    closeEffect : 'none',
+  });
+});
