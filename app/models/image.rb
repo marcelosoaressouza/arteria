@@ -3,8 +3,13 @@ class Image < ActiveRecord::Base
 
   belongs_to :user
   belongs_to :license
+  has_many   :items
+  has_many   :galleries, :through => :items, :dependent => :destroy
 
-  attr_accessible :description, :published, :slug, :title, :image, :user_id, :license_id, :tag_list
+  accepts_nested_attributes_for :galleries
+  accepts_nested_attributes_for :items
+
+  attr_accessible :description, :published, :slug, :title, :image, :user_id, :license_id, :tag_list, :item_id, :items_attributes
 
   has_attached_file :image,
                     :url => "/system/users/:user_id/images/:id/:basename_:style.:extension",

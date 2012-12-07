@@ -29,6 +29,7 @@ class ImagesController < ApplicationController
   def new
     @image = Image.new
     @licenses = License.all
+    @galleries = Gallery.all
 
     if @licenses.empty?
       redirect_to "/licenses/new", :notice => "You need to create at least one license"
@@ -44,6 +45,7 @@ class ImagesController < ApplicationController
   # GET /images/1/edit
   def edit
     @licenses = License.all
+    @galleries = Gallery.all
 
     @image = Image.find(params[:id])
   end
@@ -53,6 +55,7 @@ class ImagesController < ApplicationController
   def create
     @image = Image.new(params[:image])
     @licenses = License.all
+    @galleries = Gallery.all
 
     respond_to do |format|
       if @image.save
@@ -70,6 +73,7 @@ class ImagesController < ApplicationController
   def update
     @image = Image.find(params[:id])
     @licenses = License.all
+    @galleries = Gallery.all
 
     respond_to do |format|
       if @image.update_attributes(params[:image])

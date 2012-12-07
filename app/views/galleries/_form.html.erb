@@ -1,10 +1,4 @@
-<% if params[:action] != 'edit' %>
-  <% if ! @video.errors.any? %>
-    <% @video.items.build %>
-  <% end %>
-<% end %>
-
-<%= form_for @video, :html => { :class => 'form-horizontal' } do |f| %>
+<%= form_for @gallery, :html => { :class => 'form-horizontal' } do |f| %>
   <div class="control-group">
     <%= f.label :title, :class => 'control-label' %>
     <div class="controls">
@@ -27,22 +21,6 @@
   </div>
 
   <div class="control-group">
-    <%= f.label :video, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.file_field :video %>
-    </div>
-  </div>
-
-  <div class="control-group">
-    <%= f.label :gallery, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.fields_for :items do |i| %>
-        <%= i.select( :gallery_id, @galleries.collect { |s| [s.title, s.id] }, { :include_blank => true, :default => nil } ) %>
-      <% end %>
-    </div>
-  </div>
-
-  <div class="control-group">
     <%= f.label :license_id, :class => 'control-label' %>
     <div class="controls">
       <%= f.select( :license_id, @licenses.collect { |l| [l.name, l.id] } ) %>
@@ -60,7 +38,6 @@
 
   <div class="form-actions">
     <%= f.submit nil, :class => 'btn btn-primary' %>
-    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                videos_path, :class => 'btn' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")), galleries_path, :class => 'btn' %>
   </div>
 <% end %>

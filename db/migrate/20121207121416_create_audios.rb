@@ -12,5 +12,6 @@ class CreateAudios < ActiveRecord::Migration
     end
     add_index :audios, :user_id
     add_index :audios, :license_id
+    add_index :audios, :slug, unique: true
   end
 end

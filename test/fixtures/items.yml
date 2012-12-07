@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  gallery: 
+  audio: 
+  video: 
+  image: 
+  post: 
+
+two:
+  gallery: 
+  audio: 
+  video: 
+  image: 
+  post: 

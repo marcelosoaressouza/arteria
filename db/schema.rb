@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121207121431) do
+ActiveRecord::Schema.define(:version => 20121207172758) do
 
   create_table "audios", :force => true do |t|
     t.string   "title"
@@ -47,6 +47,20 @@ ActiveRecord::Schema.define(:version => 20121207121431) do
   add_index "ckeditor_assets", ["assetable_type", "assetable_id"], :name => "idx_ckeditor_assetable"
   add_index "ckeditor_assets", ["assetable_type", "type", "assetable_id"], :name => "idx_ckeditor_assetable_type"
 
+  create_table "galleries", :force => true do |t|
+    t.string   "title"
+    t.string   "slug"
+    t.string   "description"
+    t.boolean  "published"
+    t.integer  "user_id"
+    t.integer  "license_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "galleries", ["license_id"], :name => "index_galleries_on_license_id"
+  add_index "galleries", ["user_id"], :name => "index_galleries_on_user_id"
+
   create_table "images", :force => true do |t|
     t.string   "title"
     t.string   "slug"
@@ -64,6 +78,22 @@ ActiveRecord::Schema.define(:version => 20121207121431) do
 
   add_index "images", ["license_id"], :name => "index_images_on_license_id"
   add_index "images", ["user_id"], :name => "index_images_on_user_id"
+
+  create_table "items", :force => true do |t|
+    t.integer  "gallery_id"
+    t.integer  "audio_id"
+    t.integer  "video_id"
+    t.integer  "image_id"
+    t.integer  "post_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "items", ["audio_id"], :name => "index_items_on_audio_id"
+  add_index "items", ["gallery_id"], :name => "index_items_on_gallery_id"
+  add_index "items", ["image_id"], :name => "index_items_on_image_id"
+  add_index "items", ["post_id"], :name => "index_items_on_post_id"
+  add_index "items", ["video_id"], :name => "index_items_on_video_id"
 
   create_table "licenses", :force => true do |t|
     t.string   "name"

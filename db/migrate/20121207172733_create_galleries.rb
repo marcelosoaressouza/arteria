@@ -1,6 +1,6 @@
-class CreateImages < ActiveRecord::Migration
+class CreateGalleries < ActiveRecord::Migration
   def change
-    create_table :images do |t|
+    create_table :galleries do |t|
       t.string :title
       t.string :slug
       t.string :description
@@ -10,8 +10,8 @@ class CreateImages < ActiveRecord::Migration
 
       t.timestamps
     end
-    add_index :images, :user_id
-    add_index :images, :license_id
-    add_index :images, :slug, unique: true
+    add_index :galleries, :user_id
+    add_index :galleries, :license_id
+    add_index :galleries, :slug, unique: true
   end
 end

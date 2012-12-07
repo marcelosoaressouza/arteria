@@ -12,5 +12,6 @@ class CreateVideos < ActiveRecord::Migration
     end
     add_index :videos, :user_id
     add_index :videos, :license_id
+    add_index :videos, :slug, unique: true
   end
 end

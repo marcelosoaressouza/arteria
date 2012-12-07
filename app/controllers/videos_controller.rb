@@ -29,6 +29,7 @@ class VideosController < ApplicationController
   def new
     @video = Video.new
     @licenses = License.all
+    @galleries = Gallery.all
 
     if @licenses.empty?
       redirect_to "/licenses/new", :notice => "You need to create at least one license"
@@ -43,8 +44,10 @@ class VideosController < ApplicationController
 
   # GET /videos/1/edit
   def edit
-    @video = Video.find(params[:id])
     @licenses = License.all
+    @galleries = Gallery.all
+
+    @video = Video.find(params[:id])
   end
 
   # POST /videos
@@ -52,6 +55,7 @@ class VideosController < ApplicationController
   def create
     @video = Video.new(params[:video])
     @licenses = License.all
+    @galleries = Gallery.all
 
     respond_to do |format|
       if @video.save
@@ -69,6 +73,7 @@ class VideosController < ApplicationController
   def update
     @video = Video.find(params[:id])
     @licenses = License.all
+    @galleries = Gallery.all
 
     respond_to do |format|
       if @video.update_attributes(params[:video])
