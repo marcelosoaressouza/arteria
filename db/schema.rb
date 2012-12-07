@@ -11,7 +11,25 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121206183759) do
+ActiveRecord::Schema.define(:version => 20121207121431) do
+
+  create_table "audios", :force => true do |t|
+    t.string   "title"
+    t.string   "slug"
+    t.string   "description"
+    t.boolean  "published"
+    t.integer  "user_id"
+    t.integer  "license_id"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+    t.string   "audio_file_name"
+    t.string   "audio_content_type"
+    t.integer  "audio_file_size"
+    t.datetime "audio_updated_at"
+  end
+
+  add_index "audios", ["license_id"], :name => "index_audios_on_license_id"
+  add_index "audios", ["user_id"], :name => "index_audios_on_user_id"
 
   create_table "ckeditor_assets", :force => true do |t|
     t.string   "data_file_name",                  :null => false

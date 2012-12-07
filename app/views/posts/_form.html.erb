@@ -5,24 +5,28 @@
       <%= f.text_field :title, :class => 'span8', :size => '64', :maxlength => '254' %>
     </div>
   </div>
+
   <div class="control-group">
     <%= f.label :content, :class => 'control-label' %>
     <div class="controls">
        <%= f.cktext_area :content, :toolbar => 'Full', :width => '90%', :height => 300 %>
     </div>
   </div>
+
   <div class="control-group">
     <%= f.label :published, :class => 'control-label' %>
     <div class="controls">
       <%= f.check_box :published, :class => 'check_box' %>
     </div>
   </div>
+
   <div class="control-group">
     <%= f.label :license_id, :class => 'control-label' %>
     <div class="controls">
       <%= f.select( :license_id, @licenses.collect { |l| [l.name, l.id] } ) %>
     </div>
   </div>
+
   <div class="control-group">
     <%= f.label :tags, :class => 'control-label' %>
     <div class="controls">

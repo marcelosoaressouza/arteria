@@ -1,8 +1,10 @@
 class Video < ActiveRecord::Base
+  acts_as_taggable_on :tags
+
   belongs_to :user
   belongs_to :license
 
-  attr_accessible :description, :published, :slug, :title, :video, :user_id, :license_id
+  attr_accessible :description, :published, :slug, :title, :video, :user_id, :license_id, :tag_list
 
   has_attached_file :video,
                     :url => "/system/users/:user_id/videos/:id/:filename",

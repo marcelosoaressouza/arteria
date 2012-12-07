@@ -30,6 +30,11 @@ class VideosController < ApplicationController
     @video = Video.new
     @licenses = License.all
 
+    if @licenses.empty?
+      redirect_to "/licenses/new", :notice => "You need to create at least one license"
+      return
+    end
+
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @video }
