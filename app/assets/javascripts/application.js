@@ -24,4 +24,7 @@ $(document).ready(function() {
     openEffect  : 'none',
     closeEffect : 'none',
   });
+
+  $('#arteria-carousel').jcarousel();
+  
 });
