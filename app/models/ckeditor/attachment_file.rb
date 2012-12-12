@@ -6,7 +6,7 @@ class Ckeditor::AttachmentFile < Ckeditor::Asset
   validates_attachment_size :data, :less_than => 64.megabytes
   validates_attachment_presence :data
 	
-	def url_thumb
-	  @url_thumb ||= Ckeditor::Utils.filethumb(filename)
-	end
+  def url_thumb
+    @url_thumb ||= Ckeditor::Utils.filethumb(filename)
+  end
 end

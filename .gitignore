@@ -5,6 +5,8 @@
 /tmp
 /config/database.yml
 /public/system
+/public/attachments
+/public/pictures
 /index
 /solr
 /Gemfile.lock
