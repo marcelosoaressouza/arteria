@@ -13,6 +13,17 @@ class GalleriesController < ApplicationController
     end
   end
 
+  # GET /galleries/list
+  # GET /galleries/list.json
+  def list
+    @galleries = Gallery.all
+
+    respond_to do |format|
+      format.html
+      format.json { render json: @galleries }
+    end
+  end
+
   # GET /galleries/1
   # GET /galleries/1.json
   def show

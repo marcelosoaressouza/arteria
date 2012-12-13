@@ -1,5 +1,4 @@
 <% if @posts.length > 0 %>
-  <center>
   <ul id="arteria-carousel-posts" class="jcarousel-skin-posts">
     <% @posts.each do |post| %>
        <li>
@@ -12,12 +11,12 @@
        </li>
     <% end %>
   </ul>
-  </center>
 <% end %>
 
+<!--
 <% @galleries.each do |gallery| %>
   <% if gallery.items.length > 0 %>
-        <ul id="arteria-carousel-home" class="jcarousel-skin-home">
+        <ul id="arteria-carousel-galleries" class="arteria-carousel-galleries jcarousel-skin-galleries">
           <% gallery.items.each do |item| %>
             <% if item.image %> 
               <li>
@@ -43,3 +42,4 @@
         </ul>
   <% end %>
 <% end %>
+-->

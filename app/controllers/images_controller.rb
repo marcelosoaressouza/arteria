@@ -13,6 +13,17 @@ class ImagesController < ApplicationController
     end
   end
 
+  # GET /images/list
+  # GET /images/list.json
+  def list
+    @images = Image.all
+
+    respond_to do |format|
+      format.html
+      format.json { render json: @images }
+    end
+  end
+
   # GET /images/1
   # GET /images/1.json
   def show

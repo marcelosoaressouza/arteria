@@ -1,5 +1,7 @@
-<%- model_class = Image -%>
-
+<%- model_class = Gallery -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
+</div>
 <table class="table table-striped">
   <thead>
     <tr>
@@ -10,34 +12,26 @@
       <th><%= model_class.human_attribute_name(:published) %></th>
       <th><%= model_class.human_attribute_name(:user_id) %></th>
       <th><%= model_class.human_attribute_name(:license_id) %></th>
-      <th><%= model_class.human_attribute_name(:image_file_name) %></th>
-      <th><%= model_class.human_attribute_name(:image_content_type) %></th>
-      <th><%= model_class.human_attribute_name(:image_file_size) %></th>
-      <th><%= model_class.human_attribute_name(:image_updated_at) %></th>
       <th><%= model_class.human_attribute_name(:created_at) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
   <tbody>
-    <% @images.each do |image| %>
+    <% @galleries.each do |gallery| %>
       <tr>
-        <td><%= link_to image.id, image_path(image) %></td>
-        <td><%= image.title %></td>
-        <td><%= image.slug %></td>
-        <td><%= image.description %></td>
-        <td><%= image.published %></td>
-        <td><%= image.user_id %></td>
-        <td><%= image.license_id %></td>
-        <td><%= image.image_file_name %></td>
-        <td><%= image.image_content_type %></td>
-        <td><%= image.image_file_size %></td>
-        <td><%= image.image_updated_at %></td>
-        <td><%=l image.created_at %></td>
+        <td><%= link_to gallery.id, gallery_path(gallery) %></td>
+        <td><%= gallery.title %></td>
+        <td><%= gallery.slug %></td>
+        <td><%= gallery.description %></td>
+        <td><%= gallery.published %></td>
+        <td><%= gallery.user_id %></td>
+        <td><%= gallery.license_id %></td>
+        <td><%=l gallery.created_at %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                      edit_image_path(image), :class => 'btn btn-mini' %>
+                      edit_gallery_path(gallery), :class => 'btn btn-mini' %>
           <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-                      image_path(image),
+                      gallery_path(gallery),
                       :method => :delete,
                       :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
                       :class => 'btn btn-mini btn-danger' %>
@@ -46,3 +40,7 @@
     <% end %>
   </tbody>
 </table>
+
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_gallery_path,
+            :class => 'btn btn-primary' %>

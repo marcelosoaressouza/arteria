@@ -5,11 +5,22 @@ Arteria::Application.routes.draw do
 
   resources :collections
   resources :audios
-  resources :images
+
+  resources :galleries do
+    collection do
+      get 'list'
+    end
+  end
+
+  resources :images do
+    collection do
+      get 'list'
+    end
+  end
+
   resources :videos
   resources :posts
   resources :licenses
-  resources :galleries
 
   match 'tagged' => 'home#tagged', :as => 'tagged'
 

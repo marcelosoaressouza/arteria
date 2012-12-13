@@ -26,18 +26,19 @@ $(document).ready(function() {
   });
 
   $('#arteria-carousel-images').jcarousel();
+
   $('#arteria-carousel-posts').jcarousel({
     animation: 3000,
     scroll: 1,
-    wrap: 'both',
-    auto: 2
+    wrap: 'circular',
+    auto: 3
   });
 
-  $('#arteria-carousel-home').jcarousel({
+  $('.arteria-carousel-galleries').jcarousel({
     animation: 3000,
     scroll: 1,
     wrap: 'circular',
-    auto: 2
+    auto: 3
   });
   
 });

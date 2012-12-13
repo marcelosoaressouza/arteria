@@ -1,6 +1,4 @@
-.jcarousel-skin-posts .jcarousel-container {
-    background: #fff;
-}
+.jcarousel-skin-posts .jcarousel-container { }
 
 .jcarousel-skin-posts .jcarousel-direction-rtl {
 	direction: rtl;
@@ -8,7 +6,6 @@
 
 .jcarousel-skin-posts .jcarousel-container-horizontal {
     width: 90%;
-    padding: 20px 40px;
 }
 
 .jcarousel-skin-posts .jcarousel-container-vertical {
@@ -32,17 +29,18 @@
 }
 
 .jcarousel-skin-posts .jcarousel-item {
-    width: 770px;
+    width: 780px;
     height: 190px;
+
 }
 
 .jcarousel-skin-posts .jcarousel-item-horizontal {
-	margin-left: 0;
+    margin-left: 0;
     margin-right: 10px;
 }
 
 .jcarousel-skin-posts .jcarousel-direction-rtl .jcarousel-item-horizontal {
-	margin-left: 10px;
+    margin-left: 10px;
     margin-right: 0;
 }
 
@@ -60,18 +58,23 @@
  */
 .jcarousel-skin-posts .jcarousel-next-horizontal {
     position: absolute;
-    top: 43px;
-    right: 5px;
+/*    top: 43px; */
+    right: 25px;
+    top: 160px;
     width: 32px;
     height: 32px;
     cursor: pointer;
     background: transparent url(next-horizontal.png) no-repeat 0 0;
+    opacity:0.3;
+    filter:alpha(opacity=30);
 }
 
 .jcarousel-skin-posts .jcarousel-direction-rtl .jcarousel-next-horizontal {
+
     left: 5px;
     right: auto;
     background-image: url(prev-horizontal.png);
+
 }
 
 .jcarousel-skin-posts .jcarousel-next-horizontal:hover,
@@ -92,6 +95,7 @@
 }
 
 .jcarousel-skin-posts .jcarousel-prev-horizontal {
+/*
     position: absolute;
     top: 43px;
     left: 5px;
@@ -99,12 +103,15 @@
     height: 32px;
     cursor: pointer;
     background: transparent url(prev-horizontal.png) no-repeat 0 0;
+*/
 }
 
 .jcarousel-skin-posts .jcarousel-direction-rtl .jcarousel-prev-horizontal {
+/*
     left: auto;
     right: 5px;
     background-image: url(next-horizontal.png);
+*/
 }
 
 .jcarousel-skin-posts .jcarousel-prev-horizontal:hover, 
