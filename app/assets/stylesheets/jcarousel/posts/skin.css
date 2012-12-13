@@ -1,4 +1,9 @@
-.jcarousel-skin-posts .jcarousel-container { }
+.jcarousel-skin-posts {
+    width: 800px;
+}
+
+.jcarousel-skin-posts .jcarousel-container {
+}
 
 .jcarousel-skin-posts .jcarousel-direction-rtl {
 	direction: rtl;

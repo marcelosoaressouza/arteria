@@ -73,19 +73,8 @@
 
     <div class="container-fluid">
       <div class="row-fluid">
-<!--
-        <div class="span2" style="text-align: center;">
-          <div class="well sidebar-nav">
-            <ul class="nav nav-list">
-              <li class="nav-header">Sidebar</li>
-              <li><%= link_to "Link1", "/path1"  %></li>
-              <li><%= link_to "Link2", "/path2"  %></li>
-              <li><%= link_to "Link3", "/path3"  %></li>
-            </ul>
-          </div>
-        </div>
--->
-        <div class="span2" style="text-align: center;">
+
+        <div class="span2" style="text-align: center; float: left;">
           <div class="well sidebar-nav">
             <ul class="nav nav-list">
               <li class="nav-header" style="color: #B12C2F;">A Artéria</li>
@@ -104,11 +93,28 @@
           </div>
         </div>
 
-        <div class="span9">
+        <div class="span7">
+          <center>
           <%= bootstrap_flash %>
           <%= yield %>
+          </center>
         </div>
 
+        <div class="span2" style="text-align: center; float: right;">
+          <div class="well sidebar-nav">
+            <ul class="nav nav-list">
+              <li class="nav-header" style="color: #B12C2F;">Parceiros</li>
+              <li><%= link_to "Link1", "/path1"  %></li>
+              <li><%= link_to "Link2", "/path2"  %></li>
+              <li><%= link_to "Link3", "/path3"  %></li>
+
+              <li class="nav-header" style="color: #B12C2F;">RSS Feed</li>
+              <li>
+                <%= link_to "Link1", "/path1"  %>
+              </li>
+            </ul>
+          </div>
+        </div>
       </div><!--/row-->
 
       <footer>
