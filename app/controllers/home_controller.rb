@@ -1,7 +1,8 @@
 class HomeController < ApplicationController
   def index
     @posts = Post.all
-    @galleries = Gallery.all
+    @images = Image.all
+    @tags = Post.tag_counts_on(:tags)
 
     respond_to do |format|
       format.html # index.html.erb

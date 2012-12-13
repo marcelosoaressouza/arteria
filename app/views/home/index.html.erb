@@ -2,44 +2,24 @@
   <ul id="arteria-carousel-posts" class="jcarousel-skin-posts">
     <% @posts.each do |post| %>
        <li>
-         <span style="font-size: 18px; float: left;"><%= link_to post.title, post %></span>
+         <%= link_to post.title, post, :style => "font-size: 21px; font-weight:bold; float: left;" %>
          <br/><br/>
-         <div style="text-align:justify;">
-           <%= truncate((strip_tags(sanitize(post.content, :tags => []))), :length => 680) %> 
+         <div style="text-align:justify; font-size: 16px;">
+           <!-- <%= truncate((strip_tags(sanitize(post.content, :tags => []))), :length => 2048) %>  -->
+           <%= truncate_html post.content, :length => 1200 %>
          </div>
-         <b><%= link_to I18n.t('Read More'), post, :style => "color: #B0201F; float: left;" if post.content.length > 680 %></b>
+         <b><%= link_to I18n.t('Read More'), post, :style => "color: #B0201F; float: left;" if strip_tags(sanitize(post.content, :tags => [])).size > 1200 %></b>
        </li>
     <% end %>
   </ul>
 <% end %>
 
-<!--
-<% @galleries.each do |gallery| %>
-  <% if gallery.items.length > 0 %>
-        <ul id="arteria-carousel-galleries" class="arteria-carousel-galleries jcarousel-skin-galleries">
-          <% gallery.items.each do |item| %>
-            <% if item.image %> 
-              <li>
-                <%= link_to (image_tag item.image.image.url(:medium)), item.image.image.url, :id => "image-box", :alt => item.image.title %>
-              </li>
-            <% end %>
-            <% if item.video %>
-              <li>
-                <%= link_to (image_tag item.video.image.url(:thumb)), item.video.image.url, :id => "image-box", :alt => item.video.title %>
-              </li>
-            <% end %>
-            <% if item.post %>
-              <li>
-                <b><%= link_to item.post.title, item.post %></b>
-                <br/><br/>
-                <div style="text-align:justify;">
-                  <%= truncate((strip_tags(sanitize(item.post.content, :tags => []))), :length => 384) %> 
-                </div>
-                <b><%= link_to I18n.t('Read More'), item.post, :style => "color: #B0201F;" if item.post.content.length > 384 %></b>
-              </li>
-            <% end %>
-          <% end %>
-        </ul>
-  <% end %>
+<br/>
+
+<% if @images.length > 0 %>
+  <ul id="arteria-carousel-images" class="jcarousel-skin-images">
+    <% @images.each do |image| %>
+      <li><%= link_to (image_tag image.image.url(:thumb)), image.image.url, :id => "image-box", :alt => image.title %></li>
+    <% end %>
+  </ul>
 <% end %>
--->

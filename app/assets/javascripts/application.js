@@ -25,7 +25,13 @@ $(document).ready(function() {
     closeEffect : 'none',
   });
 
-  $('#arteria-carousel-images').jcarousel();
+  $('#arteria-carousel-images').jcarousel({
+    animation: 3000,
+    scroll: 1,
+    wrap: 'circular',
+    auto: 3
+  });
+
 
   $('#arteria-carousel-posts').jcarousel({
     animation: 3000,

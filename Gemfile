@@ -45,3 +45,7 @@ gem 'opinio'
 gem 'settingslogic'
 gem 'kaminari'
 gem 'validates_existence'
+
+gem 'nokogiri'
+gem 'htmlentities'
+gem 'truncate_html'

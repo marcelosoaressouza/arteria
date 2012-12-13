@@ -53,7 +53,7 @@
           </a>
           <a class="brand" href="/"><img src="/assets/Arteria-Nome.jpg" alt="Logo Artéria Cultura e Cidadania"/></a>
           <div class="container-fluid nav-collapse">
-            <ul class="nav" style="font-size: 21px; padding: 8px;">
+            <ul class="nav" style="font-size: 21px; padding: 8px; float: right;">
               <li><%= link_to I18n.t("Galleries"), "/galleries"  %></li>
               <li><%= link_to I18n.t("Audios"), "/audios"  %></li>
               <li><%= link_to I18n.t("Images"), "/images"  %></li>
@@ -63,7 +63,7 @@
                 <li><%= link_to I18n.t("Licenses"), "/licenses" if current_user.has_role? :admin %></li>
                 <li id="logout" style="float: right;"><%= link_to(t("Logout") + " (" + current_user.firstname + ") ", destroy_user_session_path, :method => :delete) %></li>
               <% else %>
-                <li id="login" style="float: right;"><%= link_to(t("Login"), new_user_session_path)  %></li>
+                <li id="login" style="float: right; font-size: 14px;"><%= link_to(t("Login"), new_user_session_path)  %></li>
               <% end %>
             </ul>
           </div><!--/.nav-collapse -->
@@ -73,13 +73,8 @@
 
     <div class="container-fluid">
       <div class="row-fluid">
-
-        <div class="span9">
-          <%= bootstrap_flash %>
-          <%= yield %>
-        </div>
-<!--        <div class="span2" style="text-align: center;"> -->
 <!--
+        <div class="span2" style="text-align: center;">
           <div class="well sidebar-nav">
             <ul class="nav nav-list">
               <li class="nav-header">Sidebar</li>
@@ -88,9 +83,32 @@
               <li><%= link_to "Link3", "/path3"  %></li>
             </ul>
           </div>
+        </div>
 -->
-        <!--/.well -->
-<!--        </div> --><!--/span-->
+        <div class="span2" style="text-align: center;">
+          <div class="well sidebar-nav">
+            <ul class="nav nav-list">
+              <li class="nav-header" style="color: #B12C2F;">A Artéria</li>
+                <div style="text-align: justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec condimentum risus non metus eleifend iaculis. Suspendisse at dui lacus. Aenean mollis lectus ut ipsum cursus vel tempor massa accumsan. Aenean et dui nec eros elementum tempor. Nulla malesuada mi nec nisl molestie blandit. Pellentesque eu sagittis tortor. Sed at elit nec dui feugiat scelerisque. Praesent vel tortor vitae purus pellentesque pulvinar. Lorem ipsum dolor sit amet, consectetur adipiscing elit. In rutrum luctus blandit. Suspendisse vel mi vel mauris adipiscing egestas vitae sit amet nunc. Suspendisse fermentum lacus orci, ut bibendum risus. Phasellus placerat turpis vitae neque pellentesque non pretium augue ornare. </div>
+              <li class="nav-header" style="color: #B12C2F;">Tags</li>
+                <% if !@tags.nil? %>
+                  <% if @tags.size > 0 %>
+                    <% tag_cloud(@tags, %w(tag1 tag2 tag3 tag4)) do |tag, css_class| %>
+                      <%= link_to tag.name, tagged_url(:tag => tag.name), :class => css_class %>
+                    <% end %>
+                  <% else %>
+                    <b><%= t('No Items Registered') %></b>
+                  <% end %>
+                <% end %>
+            </ul>
+          </div>
+        </div>
+
+        <div class="span9">
+          <%= bootstrap_flash %>
+          <%= yield %>
+        </div>
+
       </div><!--/row-->
 
       <footer>
