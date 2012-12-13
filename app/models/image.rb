@@ -3,6 +3,7 @@ class Image < ActiveRecord::Base
 
   belongs_to :user
   belongs_to :license
+
   has_many   :items
   has_many   :galleries, :through => :items, :dependent => :destroy
 

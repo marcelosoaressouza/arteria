@@ -2,6 +2,17 @@
 <div class="page-header">
   <h1><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
 </div>
+
+<% if @posts.length > 0 %>
+  <center>
+  <ul id="arteria-carousel-posts" class="jcarousel-skin-posts">
+    <% @posts.each do |post| %>
+      <li><%= post.title %></li>
+    <% end %>
+  </ul>
+  </center>
+<% end %>
+
 <table class="table table-striped">
   <thead>
     <tr>

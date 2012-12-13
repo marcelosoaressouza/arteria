@@ -29,6 +29,7 @@ class PostsController < ApplicationController
   def new
     @post = Post.new
     @licenses = License.all
+    @galleries = Gallery.all
 
     if @licenses.empty?
       redirect_to "/licenses/new", :notice => "You need to create at least one license"
@@ -44,6 +45,7 @@ class PostsController < ApplicationController
   # GET /posts/1/edit
   def edit
     @licenses = License.all
+    @galleries = Gallery.all
 
     @post = Post.find(params[:id])
   end
@@ -53,6 +55,7 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(params[:post])
     @licenses = License.all
+    @galleries = Gallery.all
 
     respond_to do |format|
       if @post.save
@@ -70,6 +73,7 @@ class PostsController < ApplicationController
   def update
     @post = Post.find(params[:id])
     @licenses = License.all
+    @galleries = Gallery.all
 
     respond_to do |format|
       if @post.update_attributes(params[:post])

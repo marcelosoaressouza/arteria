@@ -12,3 +12,12 @@
  *= require fancybox
  *= require_tree .
  */
+
+.row-fluid {
+  background-image: url('/assets/Arteria-Logo-Large-Transparent.jpg');
+  background-repeat:no-repeat;
+  background-position: top right;
+  min-width: 800px;
+  min-height: 600px;
+  border: 1px solid #F8F8F8;
+}
