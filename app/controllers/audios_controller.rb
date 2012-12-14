@@ -1,6 +1,14 @@
 class AudiosController < ApplicationController
+  layout nil, :only => :view
+
   protect_from_forgery
   before_filter :authenticate_user!, :only => [:new, :edit, :create, :update, :destroy]
+
+  before_filter :tags
+
+  def tags
+    @tags = Post.tag_counts_on(:tags)
+  end
 
   # GET /audios
   # GET /audios.json
@@ -9,6 +17,17 @@ class AudiosController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
+      format.json { render json: @audios }
+    end
+  end
+
+  # GET /audios/list
+  # GET /audios/list.json
+  def list
+    @audios = Audio.all
+
+    respond_to do |format|
+      format.html
       format.json { render json: @audios }
     end
   end
@@ -24,11 +43,18 @@ class AudiosController < ApplicationController
     end
   end
 
+  # GET /audios/view/1
+  def view
+    @audio = Audio.find(params[:id])
+    render :layout => false
+  end
+
   # GET /audios/new
   # GET /audios/new.json
   def new
     @audio = Audio.new
     @licenses = License.all
+    @galleries = Gallery.all
 
     if @licenses.empty?
       redirect_to "/licenses/new", :notice => "You need to create at least one license"
@@ -44,6 +70,7 @@ class AudiosController < ApplicationController
   # GET /audios/1/edit
   def edit
     @licenses = License.all
+    @galleries = Gallery.all
 
     @audio = Audio.find(params[:id])
   end
@@ -53,6 +80,7 @@ class AudiosController < ApplicationController
   def create
     @audio = Audio.new(params[:audio])
     @licenses = License.all
+    @galleries = Gallery.all
 
     respond_to do |format|
       if @audio.save
@@ -70,6 +98,7 @@ class AudiosController < ApplicationController
   def update
     @audio = Audio.find(params[:id])
     @licenses = License.all
+    @galleries = Gallery.all
 
     respond_to do |format|
       if @audio.update_attributes(params[:audio])

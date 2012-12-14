@@ -3,12 +3,17 @@ Arteria::Application.routes.draw do
 
   match 'tagged' => 'home#tagged', :as => 'tagged'
 
-  resources :collections
-  resources :audios
-
-  resources :galleries do
+  resources :audios do
     collection do
       get 'list'
+      get 'view/:id', :action => 'view', :as => 'view'
+    end
+  end
+
+  resources :videos do
+    collection do
+      get 'list'
+      get 'view/:id', :action => 'view', :as => 'view'
     end
   end
 
@@ -18,8 +23,18 @@ Arteria::Application.routes.draw do
     end
   end
 
-  resources :videos
-  resources :posts
+  resources :galleries do
+    collection do
+      get 'list'
+    end
+  end
+
+  resources :posts do
+    collection do
+      get 'list'
+    end
+  end
+
   resources :licenses
 
   match 'tagged' => 'home#tagged', :as => 'tagged'

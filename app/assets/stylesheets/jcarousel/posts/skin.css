@@ -19,12 +19,12 @@
 
 .jcarousel-skin-posts .jcarousel-clip-horizontal {
     width:  790px;
-    height: 400px;
+    height: 370px;
 }
 
 .jcarousel-skin-posts .jcarousel-item {
     width: 780px;
-    height: 390px;
+    height: 360px;
 }
 
 .jcarousel-skin-posts .jcarousel-item-horizontal {
@@ -47,9 +47,8 @@
  */
 .jcarousel-skin-posts .jcarousel-next-horizontal {
     position: absolute;
-/*    top: 43px; */
-    right: 25px;
-    top: 350px;
+    right: 5px;
+    top: 340px;
     width: 32px;
     height: 32px;
     cursor: pointer;

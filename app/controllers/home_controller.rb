@@ -1,8 +1,13 @@
 class HomeController < ApplicationController
+  before_filter :tags
+
+  def tags
+    @tags = Post.tag_counts_on(:tags)
+  end
+
   def index
     @posts = Post.all
     @images = Image.all
-    @tags = Post.tag_counts_on(:tags)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -19,8 +24,8 @@ class HomeController < ApplicationController
     else
       @contents  = Post.all
       @contents += Audio.all
-      @contents += Image.all
       @contents += Video.all
+      @contents += Image.all
     end
   end
 end

@@ -1,45 +1,44 @@
 <%- model_class = Gallery -%>
+<center>
 <div class="accordion" id="#accordion2">
   <% @galleries.each do |gallery| %>
     <div class="accordion-group">
+
       <div class="accordion-heading">
         <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#<%= gallery.slug %>">
           <b><%= gallery.title %></b>
         </a>
       </div>
-      <center>
+
       <div id="<%= gallery.slug %>" class="accordion-body collapse">
         <div class="accordion-inner">
-
-        <ul id="arteria-carousel-galleries-<%= gallery.id %>" class="arteria-carousel-galleries jcarousel-skin-galleries">
-          <% gallery.items.each do |item| %>
-            <% if item.image %> 
-              <li>
-                <%= link_to (image_tag item.image.image.url(:medium)), item.image.image.url, :id => "image-box", :alt => item.image.title %>
-              </li>
-            <% end %>
-            <% if item.video %>
-              <li>
-                <%= link_to (image_tag item.video.image.url(:thumb)), item.video.image.url, :id => "image-box", :alt => item.video.title %>
-              </li>
-            <% end %>
-            <% if item.post %>
-              <li>
-                <b><%= link_to item.post.title, item.post %></b>
-                <br/><br/>
-                <div style="text-align:justify;">
-                  <%= truncate((strip_tags(sanitize(item.post.content, :tags => []))), :length => 680) %> 
-                </div>
-                <b><%= link_to I18n.t('Read More'), item.post, :style => "color: #B0201F;" if item.post.content.length > 680 %></b>
-              </li>
-            <% end %>
-          <% end %>
-        </ul>
-
-        <b><%= gallery.description %></b>
+          <table class="table table-striped">
+            <tbody>
+              <% gallery.items.each do |item| %>
+                  <tr>
+                    <td>
+                      <%= link_to (image_tag item.image.image.url(:thumb)), item.image.image.url, :id => "image-box" if item.image %>
+                      <%= link_to (image_tag item.video.video.url(:thumb), :width => "150"), view_videos_path(item.video), :id => "video-box" if item.video %>
+                    </td>
+                    <td style="font-weight: bold;">
+                      <%= link_to item.image.title, image_path(item.image) if item.image %>
+                      <%= link_to item.video.title, video_path(item.video) if item.video %>
+                    </td>
+                    <td>
+                      <%= item.image.description if item.image %>
+                      <%= item.video.description if item.video %>
+                    </td>
+                    <td>
+                      <%= "Imagem" if item.image %>
+                      <%= "Vídeo" if item.video %>
+                    </td>
+                  </tr>
+              <% end %>
+            </tbody>
+          </table>
         </div>
       </div>
-      </center>
     </div>
   <% end %>
 </div>
+</center>

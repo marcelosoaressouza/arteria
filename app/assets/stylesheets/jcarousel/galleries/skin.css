@@ -1,5 +1,5 @@
 .jcarousel-skin-images {
-    width: 90%;
+    width: 790px;
 }
 
 .jcarousel-skin-galleries .jcarousel-container { }
@@ -9,13 +9,7 @@
 }
 
 .jcarousel-skin-galleries .jcarousel-container-horizontal {
-    width: 90%;
-}
-
-.jcarousel-skin-galleries .jcarousel-container-vertical {
-    width: 75px;
-    height: 245px;
-    padding: 40px 20px;
+    width: 790px;
 }
 
 .jcarousel-skin-galleries .jcarousel-clip {
@@ -23,17 +17,12 @@
 }
 
 .jcarousel-skin-galleries .jcarousel-clip-horizontal {
-    min-width: 790px;
+    min-width: 780px;
     height: 200px;
 }
 
-.jcarousel-skin-galleries .jcarousel-clip-vertical {
-    width:  75px;
-    height: 245px;
-}
-
 .jcarousel-skin-galleries .jcarousel-item {
-    min-width: 790px;
+    min-width: 780px;
     height: 190px;
 
 }
@@ -48,10 +37,6 @@
     margin-right: 0;
 }
 
-.jcarousel-skin-galleries .jcarousel-item-vertical {
-    margin-bottom: 10px;
-}
-
 .jcarousel-skin-galleries .jcarousel-item-placeholder {
     background: #fff;
     color: #000;
@@ -62,7 +47,6 @@
  */
 .jcarousel-skin-galleries .jcarousel-next-horizontal {
     position: absolute;
-/*    top: 43px; */
     right: 25px;
     top: 160px;
     width: 32px;
@@ -133,61 +117,4 @@
 .jcarousel-skin-galleries .jcarousel-prev-disabled-horizontal:active {
     cursor: default;
     background-position: -96px 0;
-}
-
-/**
- *  Vertical Buttons
- */
-.jcarousel-skin-galleries .jcarousel-next-vertical {
-    position: absolute;
-    bottom: 5px;
-    left: 43px;
-    width: 32px;
-    height: 32px;
-    cursor: pointer;
-    background: transparent url(next-vertical.png) no-repeat 0 0;
-}
-
-.jcarousel-skin-galleries .jcarousel-next-vertical:hover,
-.jcarousel-skin-galleries .jcarousel-next-vertical:focus {
-    background-position: 0 -32px;
-}
-
-.jcarousel-skin-galleries .jcarousel-next-vertical:active {
-    background-position: 0 -64px;
-}
-
-.jcarousel-skin-galleries .jcarousel-next-disabled-vertical,
-.jcarousel-skin-galleries .jcarousel-next-disabled-vertical:hover,
-.jcarousel-skin-galleries .jcarousel-next-disabled-vertical:focus,
-.jcarousel-skin-galleries .jcarousel-next-disabled-vertical:active {
-    cursor: default;
-    background-position: 0 -96px;
-}
-
-.jcarousel-skin-galleries .jcarousel-prev-vertical {
-    position: absolute;
-    top: 5px;
-    left: 43px;
-    width: 32px;
-    height: 32px;
-    cursor: pointer;
-    background: transparent url(prev-vertical.png) no-repeat 0 0;
-}
-
-.jcarousel-skin-galleries .jcarousel-prev-vertical:hover,
-.jcarousel-skin-galleries .jcarousel-prev-vertical:focus {
-    background-position: 0 -32px;
-}
-
-.jcarousel-skin-galleries .jcarousel-prev-vertical:active {
-    background-position: 0 -64px;
-}
-
-.jcarousel-skin-galleries .jcarousel-prev-disabled-vertical,
-.jcarousel-skin-galleries .jcarousel-prev-disabled-vertical:hover,
-.jcarousel-skin-galleries .jcarousel-prev-disabled-vertical:focus,
-.jcarousel-skin-galleries .jcarousel-prev-disabled-vertical:active {
-    cursor: default;
-    background-position: 0 -96px;
 }

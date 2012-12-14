@@ -1,47 +1,11 @@
 <%- model_class = Image -%>
-
 <table class="table table-striped">
-  <thead>
-    <tr>
-      <th><%= model_class.human_attribute_name(:id) %></th>
-      <th><%= model_class.human_attribute_name(:title) %></th>
-      <th><%= model_class.human_attribute_name(:slug) %></th>
-      <th><%= model_class.human_attribute_name(:description) %></th>
-      <th><%= model_class.human_attribute_name(:published) %></th>
-      <th><%= model_class.human_attribute_name(:user_id) %></th>
-      <th><%= model_class.human_attribute_name(:license_id) %></th>
-      <th><%= model_class.human_attribute_name(:image_file_name) %></th>
-      <th><%= model_class.human_attribute_name(:image_content_type) %></th>
-      <th><%= model_class.human_attribute_name(:image_file_size) %></th>
-      <th><%= model_class.human_attribute_name(:image_updated_at) %></th>
-      <th><%= model_class.human_attribute_name(:created_at) %></th>
-      <th><%=t '.actions', :default => t("helpers.actions") %></th>
-    </tr>
-  </thead>
   <tbody>
     <% @images.each do |image| %>
       <tr>
-        <td><%= link_to image.id, image_path(image) %></td>
-        <td><%= image.title %></td>
-        <td><%= image.slug %></td>
+        <td><%= link_to (image_tag image.image.url(:thumb)), image.image.url, :id => "image-box" %></td>
+        <td style="font-weight: bold;"><%= link_to image.title, image_path(image) %></td>
         <td><%= image.description %></td>
-        <td><%= image.published %></td>
-        <td><%= image.user_id %></td>
-        <td><%= image.license_id %></td>
-        <td><%= image.image_file_name %></td>
-        <td><%= image.image_content_type %></td>
-        <td><%= image.image_file_size %></td>
-        <td><%= image.image_updated_at %></td>
-        <td><%=l image.created_at %></td>
-        <td>
-          <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                      edit_image_path(image), :class => 'btn btn-mini' %>
-          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-                      image_path(image),
-                      :method => :delete,
-                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-                      :class => 'btn btn-mini btn-danger' %>
-        </td>
       </tr>
     <% end %>
   </tbody>

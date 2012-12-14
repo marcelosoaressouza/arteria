@@ -56,12 +56,12 @@
             <ul class="nav" style="font-size: 21px; padding: 8px; float: right;">
               <li><%= link_to I18n.t("Galleries"), "/galleries"  %></li>
               <li><%= link_to I18n.t("Audios"), "/audios"  %></li>
-              <li><%= link_to I18n.t("Images"), "/images"  %></li>
               <li><%= link_to I18n.t("Videos"), "/videos"  %></li>
+              <li><%= link_to I18n.t("Images"), "/images"  %></li>
               <li><%= link_to I18n.t("Posts"), "/posts"  %></li>
               <% if user_signed_in? %>
                 <li><%= link_to I18n.t("Licenses"), "/licenses" if current_user.has_role? :admin %></li>
-                <li id="logout" style="float: right;"><%= link_to(t("Logout") + " (" + current_user.firstname + ") ", destroy_user_session_path, :method => :delete) %></li>
+                <li id="logout" style="float: right; font-size: 14px;"><%= link_to(t("Logout") + " (" + current_user.firstname + ") ", destroy_user_session_path, :method => :delete) %></li>
               <% else %>
                 <li id="login" style="float: right; font-size: 14px;"><%= link_to(t("Login"), new_user_session_path)  %></li>
               <% end %>
@@ -77,8 +77,25 @@
         <div class="span2" style="text-align: center; float: left;">
           <div class="well sidebar-nav">
             <ul class="nav nav-list">
+          <a class="brand" href="/"><img src="/assets/Arteria-Logo-Small.jpg" alt="Logo Artéria Cultura e Cidadania"/></a>
               <li class="nav-header" style="color: #B12C2F;">A Artéria</li>
-                <div style="text-align: justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec condimentum risus non metus eleifend iaculis. Suspendisse at dui lacus. Aenean mollis lectus ut ipsum cursus vel tempor massa accumsan. Aenean et dui nec eros elementum tempor. Nulla malesuada mi nec nisl molestie blandit. Pellentesque eu sagittis tortor. Sed at elit nec dui feugiat scelerisque. Praesent vel tortor vitae purus pellentesque pulvinar. Lorem ipsum dolor sit amet, consectetur adipiscing elit. In rutrum luctus blandit. Suspendisse vel mi vel mauris adipiscing egestas vitae sit amet nunc. Suspendisse fermentum lacus orci, ut bibendum risus. Phasellus placerat turpis vitae neque pellentesque non pretium augue ornare. </div>
+                <div style="text-align: justify">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec condimentum risus non metus eleifend 
+                  iaculis. Suspendisse at dui lacus. Aenean mollis lectus ut ipsum cursus vel tempor massa accumsan. 
+                  Aenean et dui nec eros elementum tempor. Nulla malesuada mi nec nisl molestie blandit.
+                </div>
+            </ul>
+          </div>
+        </div>
+
+        <div class="span7">
+          <%= bootstrap_flash %>
+          <%= yield %>
+        </div>
+
+        <div class="span2" style="text-align: center; float: right;">
+          <div class="well sidebar-nav">
+            <ul class="nav nav-list">
               <li class="nav-header" style="color: #B12C2F;">Tags</li>
                 <% if !@tags.nil? %>
                   <% if @tags.size > 0 %>
@@ -89,20 +106,7 @@
                     <b><%= t('No Items Registered') %></b>
                   <% end %>
                 <% end %>
-            </ul>
-          </div>
-        </div>
 
-        <div class="span7">
-          <center>
-          <%= bootstrap_flash %>
-          <%= yield %>
-          </center>
-        </div>
-
-        <div class="span2" style="text-align: center; float: right;">
-          <div class="well sidebar-nav">
-            <ul class="nav nav-list">
               <li class="nav-header" style="color: #B12C2F;">Parceiros</li>
               <li><%= link_to "Link1", "/path1"  %></li>
               <li><%= link_to "Link2", "/path2"  %></li>

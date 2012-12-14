@@ -1,6 +1,14 @@
 class VideosController < ApplicationController
+  layout nil, :only => :view
+
   protect_from_forgery
   before_filter :authenticate_user!, :only => [:new, :edit, :create, :update, :destroy]
+
+  before_filter :tags
+
+  def tags
+    @tags = Post.tag_counts_on(:tags)
+  end
 
   # GET /videos
   # GET /videos.json
@@ -9,6 +17,17 @@ class VideosController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
+      format.json { render json: @videos }
+    end
+  end
+
+  # GET /videos/list
+  # GET /videos/list.json
+  def list
+    @videos = Video.all
+
+    respond_to do |format|
+      format.html # list.html.erb
       format.json { render json: @videos }
     end
   end
@@ -22,6 +41,12 @@ class VideosController < ApplicationController
       format.html # show.html.erb
       format.json { render json: @video }
     end
+  end
+
+  # GET /videos/view/1
+  def view
+    @video = Video.find(params[:id])
+    render :layout => false
   end
 
   # GET /videos/new

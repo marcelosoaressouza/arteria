@@ -21,3 +21,24 @@
   min-height: 400px;
   border: 1px solid #F8F8F8;
 }
+
+a {
+    color: #000000;
+}
+a:visited {
+    color: #666666;
+}
+a:hover {
+    background-color: transparent;
+    color: #000;
+}
+
+.accordion {
+  min-width: 800px;
+}
+
+.table-striped tbody tr:nth-child(2n+1) td, .table-striped tbody tr:nth-child(2n+1) th {
+  vertical-align: middle;
+  background-color: transparent;
+
+}

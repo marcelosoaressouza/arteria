@@ -19,10 +19,20 @@
 
 $(document).ready(function() {
   $("#image-box").fancybox({
-    closeBtn    : true,
-    closeClick  : true,
-    openEffect  : 'none',
-    closeEffect : 'none',
+    'closeBtn'    : true,
+    'closeClick'  : true,
+    'openEffect'  : 'none',
+    'closeEffect' : 'none',
+  });
+
+  $("#video-box").fancybox({
+    'width'         : '640',
+    'height'        : '480',
+    'closeBtn'      : true,
+    'autoScale'     : false,
+    'transitionIn'  : 'none',
+    'transitionOut' : 'none',
+    'type'          : 'iframe'
   });
 
   $('#arteria-carousel-images').jcarousel({
@@ -31,7 +41,6 @@ $(document).ready(function() {
     wrap: 'circular',
     auto: 3
   });
-
 
   $('#arteria-carousel-posts').jcarousel({
     animation: 3000,
