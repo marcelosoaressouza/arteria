@@ -1,4 +1,13 @@
 <%- model_class = Image -%>
+
+<div class="search">
+  <%= form_tag search_images_path, :method => :get do %>
+    <p><%= text_field_tag :query, params[:query] %> <%= submit_tag t('Search') %></p>
+  <% end %>
+</div>
+
+<%= "<center><h3>No Images</h3></center>".html_safe if @images.empty? %>
+
 <table class="table table-striped">
   <tbody>
     <% @images.each do |image| %>

@@ -1,6 +1,12 @@
 <%- model_class = Video -%>
 
-<%= "<center><h3>No Videos Submited</h3></center>".html_safe if @videos.empty? %>
+<div class="search">
+  <%= form_tag search_videos_path, :method => :get do %>
+    <p><%= text_field_tag :query, params[:query] %> <%= submit_tag t('Search') %></p>
+  <% end %>
+</div>
+
+<%= "<center><h3>No Videos</h3></center>".html_safe if @videos.empty? %>
 
 <table class="table table-striped">
   <tbody>

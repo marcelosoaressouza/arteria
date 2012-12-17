@@ -1,8 +1,14 @@
 class Video < ActiveRecord::Base
   acts_as_taggable_on :tags
 
+  searchable do
+    text :title, :description
+    time :created_at
+  end
+
   belongs_to :user
   belongs_to :license
+
   has_many   :items
   has_many   :galleries, :through => :items, :dependent => :destroy
 

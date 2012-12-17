@@ -1,6 +1,11 @@
 class Post < ActiveRecord::Base
   acts_as_taggable_on :tags
 
+  searchable do
+    text :title, :content
+    time :created_at
+  end
+
   belongs_to :user
   belongs_to :license
 

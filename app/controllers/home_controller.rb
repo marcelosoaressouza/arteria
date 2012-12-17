@@ -28,4 +28,17 @@ class HomeController < ApplicationController
       @contents += Image.all
     end
   end
+
+  def search
+    @posts = Post.search do
+      keywords params[:query]
+      order_by :created_at, :desc
+    end.results
+
+    respond_to do |format|
+      format.html { render :action => "index" }
+      format.xml  { render :xml => @posts }
+      format.json { render :json => @posts }
+    end
+  end
 end

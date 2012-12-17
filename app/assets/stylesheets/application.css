@@ -42,3 +42,7 @@ a:hover {
   background-color: transparent;
 
 }
+
+.search {
+  float: right;
+}

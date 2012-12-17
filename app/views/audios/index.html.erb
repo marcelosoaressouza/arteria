@@ -1,4 +1,13 @@
 <%- model_class = Audio -%>
+
+<div class="search">
+  <%= form_tag search_audios_path, :method => :get do %>
+    <p><%= text_field_tag :query, params[:query] %> <%= submit_tag t('Search') %></p>
+  <% end %>
+</div>
+
+<%= "<center><h3>No Audio</h3></center>".html_safe if @audios.empty? %>
+
 <table class="table table-striped">
   <tbody>
     <% @audios.each do |audio| %>

@@ -5,7 +5,7 @@ class ImagesController < ApplicationController
   before_filter :tags
 
   def tags
-    @tags = Post.tag_counts_on(:tags)
+    @tags = Image.tag_counts_on(:tags)
   end
 
   # GET /images
@@ -112,6 +112,19 @@ class ImagesController < ApplicationController
     respond_to do |format|
       format.html { redirect_to images_url }
       format.json { head :no_content }
+    end
+  end
+
+  def search
+    @images = Image.search do
+      keywords params[:query]
+      order_by :created_at, :desc
+    end.results
+
+    respond_to do |format|
+      format.html { render :action => "index" }
+      format.xml  { render :xml => @images }
+      format.json { render :json => @images }
     end
   end
 end

@@ -1,5 +1,13 @@
 <%- model_class = Post -%>
 
+<div class="search">
+  <%= form_tag search_posts_path, :method => :get do %>
+    <p><%= text_field_tag :query, params[:query] %> <%= submit_tag t('Search') %></p>
+  <% end %>
+</div>
+
+<%= "<center><h3>No Posts</h3></center>".html_safe if @posts.empty? %>
+
 <table class="table table-striped">
   <tbody>
     <% @posts.each do |post| %>

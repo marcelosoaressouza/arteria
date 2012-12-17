@@ -5,7 +5,7 @@ class GalleriesController < ApplicationController
   before_filter :tags
 
   def tags
-    @tags = Post.tag_counts_on(:tags)
+    @tags = Gallery.tag_counts_on(:tags)
   end
 
   # GET /galleries
@@ -107,6 +107,19 @@ class GalleriesController < ApplicationController
     respond_to do |format|
       format.html { redirect_to galleries_url }
       format.json { head :no_content }
+    end
+  end
+
+  def search
+    @galleries = Gallery.search do
+      keywords params[:query]
+      order_by :created_at, :desc
+    end.results
+
+    respond_to do |format|
+      format.html { render :action => "index" }
+      format.xml  { render :xml => @galleries }
+      format.json { render :json => @galleries }
     end
   end
 end
