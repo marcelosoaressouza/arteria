@@ -13,7 +13,7 @@ class AudiosController < ApplicationController
   # GET /audios
   # GET /audios.json
   def index
-    @audios = Audio.all
+    @audios = Audio.order('created_at DESC').page params[:page]
 
     respond_to do |format|
       format.html # index.html.erb

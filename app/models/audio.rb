@@ -6,6 +6,8 @@ class Audio < ActiveRecord::Base
     time :created_at
   end
 
+  paginates_per 30
+
   belongs_to :user
   belongs_to :license
 

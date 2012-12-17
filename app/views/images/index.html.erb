@@ -6,6 +6,8 @@
   <% end %>
 </div>
 
+<%= paginate @images, :window => 8 %>
+
 <%= "<center><h3>No Images</h3></center>".html_safe if @images.empty? %>
 
 <table class="table table-striped">
