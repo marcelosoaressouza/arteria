@@ -37,6 +37,10 @@ a:hover {
   min-width: 800px;
 }
 
+.table th, .table td {
+  vertical-align: middle;
+}
+
 .table-striped tbody tr:nth-child(2n+1) td, .table-striped tbody tr:nth-child(2n+1) th {
   vertical-align: middle;
   background-color: transparent;

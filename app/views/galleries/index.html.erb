@@ -1,7 +1,18 @@
+<div class="search">
+  <%= form_tag search_galleries_path, :method => :get do %>
+    <p><%= text_field_tag :query, params[:query] %> <%= submit_tag t('Search') %></p>
+  <% end %>
+</div>
+
+<br/><br/></br>
+
 <% if @galleries.empty? %>
   <%= "<center><h3>No Content Found.</h3></center>".html_safe %>
 <% else %>
   <center>
+
+  <%= paginate @galleries, :window => 8 %>
+
   <div class="accordion" id="#accordion2">
   <% @galleries.each do |gallery| %>
     <div class="accordion-group">

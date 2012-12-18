@@ -1,0 +1,28 @@
+        <div class="span2" style="text-align: center; float: right;">
+          <div class="well sidebar-nav">
+            <ul class="nav nav-list">
+              <li class="nav-header" style="color: #B12C2F;">Tags</li>
+                <% if !@tags.nil? %>
+                  <% if @tags.size > 0 %>
+                    <% tag_cloud(@tags, %w(tag1 tag2 tag3 tag4)) do |tag, css_class| %>
+                      <%= link_to tag.name, tagged_url(:tag => tag.name), :class => css_class %>
+                    <% end %>
+                  <% else %>
+                    <b><%= t('No Items Registered') %></b>
+                  <% end %>
+                <% end %>
+
+              <li class="nav-header" style="color: #B12C2F;">Parceiros</li>
+              <li><%= link_to "Link1", "/path1"  %></li>
+              <li><%= link_to "Link2", "/path2"  %></li>
+              <li><%= link_to "Link3", "/path3"  %></li>
+
+              <li class="nav-header" style="color: #B12C2F;">RSS Feed</li>
+              <li>
+                <%= link_to "Link1", "/path1"  %>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div><!--/row-->
+

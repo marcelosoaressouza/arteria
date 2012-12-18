@@ -10,6 +10,13 @@ Arteria::Application.routes.draw do
     end
   end
 
+  resources :roles do
+    collection do
+      get 'list'
+      get 'search'
+    end
+  end
+
   resources :homes do
     collection do
       get 'search'

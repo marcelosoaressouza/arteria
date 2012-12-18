@@ -1,12 +1,17 @@
+<div class="search">
+  <%= form_tag search_audios_path, :method => :get do %>
+    <p><%= text_field_tag :query, params[:query] %> <%= submit_tag t('Search') %></p>
+  <% end %>
+</div>
+
+<br/><br/></br>
+
 <% if @audios.empty? %>
   <%= "<center><h3>No Content Found.</h3></center>".html_safe %>
 <% else %>
   <center>
-  <div class="search">
-    <%= form_tag search_audios_path, :method => :get do %>
-      <p><%= text_field_tag :query, params[:query] %> <%= submit_tag t('Search') %></p>
-    <% end %>
-  </div>
+
+  <%= paginate @audios, :window => 8 %>
 
   <table class="table table-striped">
     <tbody>
