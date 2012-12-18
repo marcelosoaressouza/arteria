@@ -1,15 +1,11 @@
-<%- model_class = Post -%>
-<div class="page-header">
-  <h1><%= @post.title %></h1>
-</div>
+  <%- model_class = Post -%>
 
-<dl class="dl-horizontal">
-  <dt><strong><%= model_class.human_attribute_name(:title) %>:</strong></dt>
-  <dd><%= @post.title %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:content) %>:</strong></dt>
+  <div class="page-header">
+    <h3><%= @post.title %></h3>
+  </div>
+
   <dd><%= @post.content.html_safe %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:published) %>:</strong></dt>
-  <dd><%= @post.published %></dd>
+
   <dt><strong><%= model_class.human_attribute_name(:user_id) %>:</strong></dt>
   <dd><%= @post.user.firstname + " " + @post.user.lastname %></dd>
   <dt><strong><%= model_class.human_attribute_name(:license_id) %>:</strong></dt>
@@ -23,16 +19,17 @@
     <% end %>
   </dd>
 
-</dl>
+  <% if user_signed_in? %>
+    <dt><strong><%= model_class.human_attribute_name(:published) %>:</strong></dt>
+  <dd><%= @post.published %></dd>
+  <% end %>
 
-<div class="form-actions">
-  <%= link_to t('.back', :default => t("helpers.links.back")),
-              posts_path, :class => 'btn'  %>
-  <%= link_to t('.edit', :default => t("helpers.links.edit")),
-              edit_post_path(@post), :class => 'btn' %>
-  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-              post_path(@post),
-              :method => 'delete',
-              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-              :class => 'btn btn-danger' %>
-</div>
+<% if user_signed_in? %>
+  <% if current_user.has_role? :admin %>
+    <div class="form-actions">
+      <%= link_to t('.back', :default => t("helpers.links.back")), posts_path, :class => 'btn'  %>
+      <%= link_to t('.edit', :default => t("helpers.links.edit")), edit_post_path(@post), :class => 'btn' %>
+      <%= link_to t('.destroy', :default => t("helpers.links.destroy")), post_path(@post), :method => 'delete', :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-danger' %>
+    </div>
+  <% end %>
+<% end %>
