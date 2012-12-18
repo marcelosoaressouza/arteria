@@ -1,23 +1,25 @@
-<%- model_class = Image -%>
-
-<div class="search">
-  <%= form_tag search_images_path, :method => :get do %>
-    <p><%= text_field_tag :query, params[:query] %> <%= submit_tag t('Search') %></p>
-  <% end %>
-</div>
-
-<%= paginate @images, :window => 8 %>
-
-<%= "<center><h3>No Images</h3></center>".html_safe if @images.empty? %>
-
-<table class="table table-striped">
-  <tbody>
-    <% @images.each do |image| %>
-      <tr>
-        <td><%= link_to (image_tag image.image.url(:thumb)), image.image.url, :id => "image-box" %></td>
-        <td style="font-weight: bold;"><%= link_to image.title, image_path(image) %></td>
-        <td><%= image.description %></td>
-      </tr>
+<% if @images.empty? %>
+  <%= "<center><h3>No Content Found.</h3></center>".html_safe %>
+<% else %>
+  <center>
+  <div class="search">
+    <%= form_tag search_images_path, :method => :get do %>
+      <p><%= text_field_tag :query, params[:query] %> <%= submit_tag t('Search') %></p>
     <% end %>
-  </tbody>
-</table>
+  </div>
+
+  <%= paginate @images, :window => 8 %>
+
+  <table class="table table-striped">
+    <tbody>
+      <% @images.each do |image| %>
+        <tr>
+          <td><%= link_to (image_tag image.image.url(:thumb)), image.image.url, :id => "image-box" %></td>
+          <td style="font-weight: bold;"><%= link_to image.title, image_path(image) %></td>
+          <td><%= image.description %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  </center>
+<% end %>

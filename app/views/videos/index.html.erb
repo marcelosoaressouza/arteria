@@ -1,25 +1,27 @@
-<%- model_class = Video -%>
-
-<div class="search">
-  <%= form_tag search_videos_path, :method => :get do %>
-    <p><%= text_field_tag :query, params[:query] %> <%= submit_tag t('Search') %></p>
-  <% end %>
-</div>
-
-<%= "<center><h3>No Videos</h3></center>".html_safe if @videos.empty? %>
-
-<table class="table table-striped">
-  <tbody>
-    <% @videos.each do |video| %>
-      <tr>
-        <td>
-          <%= link_to (image_tag video.video.url(:thumb), :width => "150"), view_videos_path(video), :id => "video-box" %>
-        </td>
-        <td style="font-weight: bold;"> 
-          <%= link_to video.title, video_path(video) %>
-        </td>
-        <td><%= video.description %></td>
-      </tr>
+<% if @videos.empty? %>
+  <%= "<center><h3>No Content Found.</h3></center>".html_safe %>
+<% else %>
+  <center>
+  <div class="search">
+    <%= form_tag search_videos_path, :method => :get do %>
+      <p><%= text_field_tag :query, params[:query] %> <%= submit_tag t('Search') %></p>
     <% end %>
-  </tbody>
-</table>
+  </div>
+
+  <table class="table table-striped">
+    <tbody>
+      <% @videos.each do |video| %>
+        <tr>
+          <td>
+            <%= link_to (image_tag video.video.url(:thumb), :width => "150"), view_videos_path(video), :id => "video-box" %>
+          </td>
+          <td style="font-weight: bold;"> 
+            <%= link_to video.title, video_path(video) %>
+          </td>
+          <td><%= video.description %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  </center>
+<% end %>

@@ -1,21 +1,23 @@
-<%- model_class = Audio -%>
-
-<div class="search">
-  <%= form_tag search_audios_path, :method => :get do %>
-    <p><%= text_field_tag :query, params[:query] %> <%= submit_tag t('Search') %></p>
-  <% end %>
-</div>
-
-<%= "<center><h3>No Audio</h3></center>".html_safe if @audios.empty? %>
-
-<table class="table table-striped">
-  <tbody>
-    <% @audios.each do |audio| %>
-      <tr>
-        <td><%= link_to image_tag('/assets/Audio.jpg', :width => '75'), view_audios_path(audio), :id => "video-box" %></td>
-        <td style="font-weight: bold;"><%= link_to audio.title, audio_path(audio) %></td>
-        <td><%= audio.description %></td>
-      </tr>
+<% if @audios.empty? %>
+  <%= "<center><h3>No Content Found.</h3></center>".html_safe %>
+<% else %>
+  <center>
+  <div class="search">
+    <%= form_tag search_audios_path, :method => :get do %>
+      <p><%= text_field_tag :query, params[:query] %> <%= submit_tag t('Search') %></p>
     <% end %>
-  </tbody>
-</table>
+  </div>
+
+  <table class="table table-striped">
+    <tbody>
+      <% @audios.each do |audio| %>
+        <tr>
+          <td><%= link_to image_tag('/assets/Audio.jpg', :width => '75'), view_audios_path(audio), :id => "video-box" %></td>
+          <td style="font-weight: bold;"><%= link_to audio.title, audio_path(audio) %></td>
+          <td><%= audio.description %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  </center>
+<% end %>

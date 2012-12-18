@@ -3,6 +3,13 @@ Arteria::Application.routes.draw do
 
   match 'tagged' => 'home#tagged', :as => 'tagged'
 
+  resources :users do
+    collection do
+      get 'list'
+      get 'search'
+    end
+  end
+
   resources :homes do
     collection do
       get 'search'

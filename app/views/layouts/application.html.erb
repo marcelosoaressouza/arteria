@@ -61,6 +61,7 @@
               <li><%= link_to I18n.t("Posts"), "/posts"  %></li>
               <% if user_signed_in? %>
                 <li><%= link_to I18n.t("Licenses"), "/licenses" if current_user.has_role? :admin %></li>
+                <li><%= link_to I18n.t("Users"), "/users" if current_user.has_role? :admin %></li>
                 <li id="logout" style="float: right; font-size: 14px;"><%= link_to(t("Logout") + " (" + current_user.firstname + ") ", destroy_user_session_path, :method => :delete) %></li>
               <% else %>
                 <li id="login" style="float: right; font-size: 14px;"><%= link_to(t("Login"), new_user_session_path)  %></li>

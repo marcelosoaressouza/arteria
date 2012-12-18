@@ -1,20 +1,22 @@
-<%- model_class = Post -%>
-
-<div class="search">
-  <%= form_tag search_posts_path, :method => :get do %>
-    <p><%= text_field_tag :query, params[:query] %> <%= submit_tag t('Search') %></p>
-  <% end %>
-</div>
-
-<%= "<center><h3>No Posts</h3></center>".html_safe if @posts.empty? %>
-
-<table class="table table-striped">
-  <tbody>
-    <% @posts.each do |post| %>
-      <tr>
-        <td style="font-weight: bold;"><%= link_to post.title, post_path(post), :style => "color: #B7181C" %></td>
-        <td><%= truncate(strip_tags(post.content), :length => 1024) %></td>
-      </tr>
+<% if @posts.empty? %>
+  <%= "<center><h3>No Content Found.</h3></center>".html_safe %>
+<% else %>
+  <center>
+  <div class="search">
+    <%= form_tag search_posts_path, :method => :get do %>
+      <p><%= text_field_tag :query, params[:query] %> <%= submit_tag t('Search') %></p>
     <% end %>
-  </tbody>
-</table>
+  </div>
+
+  <table class="table table-striped">
+    <tbody>
+      <% @posts.each do |post| %>
+        <tr>
+          <td style="font-weight: bold;"><%= link_to post.title, post_path(post), :style => "color: #B7181C" %></td>
+          <td><%= truncate(strip_tags(post.content), :length => 1024) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  </center>
+<% end %>

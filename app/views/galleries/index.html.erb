@@ -1,6 +1,8 @@
-<%- model_class = Gallery -%>
-<center>
-<div class="accordion" id="#accordion2">
+<% if @galleries.empty? %>
+  <%= "<center><h3>No Content Found.</h3></center>".html_safe %>
+<% else %>
+  <center>
+  <div class="accordion" id="#accordion2">
   <% @galleries.each do |gallery| %>
     <div class="accordion-group">
 
@@ -40,5 +42,6 @@
       </div>
     </div>
   <% end %>
-</div>
-</center>
+  </div>
+  </center>
+<% end %>

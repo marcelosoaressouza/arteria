@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(:version => 20121207172758) do
   end
 
   add_index "audios", ["license_id"], :name => "index_audios_on_license_id"
+  add_index "audios", ["slug"], :name => "index_audios_on_slug", :unique => true
   add_index "audios", ["user_id"], :name => "index_audios_on_user_id"
 
   create_table "ckeditor_assets", :force => true do |t|
@@ -59,6 +60,7 @@ ActiveRecord::Schema.define(:version => 20121207172758) do
   end
 
   add_index "galleries", ["license_id"], :name => "index_galleries_on_license_id"
+  add_index "galleries", ["slug"], :name => "index_galleries_on_slug", :unique => true
   add_index "galleries", ["user_id"], :name => "index_galleries_on_user_id"
 
   create_table "images", :force => true do |t|
@@ -77,6 +79,7 @@ ActiveRecord::Schema.define(:version => 20121207172758) do
   end
 
   add_index "images", ["license_id"], :name => "index_images_on_license_id"
+  add_index "images", ["slug"], :name => "index_images_on_slug", :unique => true
   add_index "images", ["user_id"], :name => "index_images_on_user_id"
 
   create_table "items", :force => true do |t|
@@ -170,7 +173,7 @@ ActiveRecord::Schema.define(:version => 20121207172758) do
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
 
-  create_table "users_roles", :id => false, :force => true do |t|
+  create_table "users_roles", :force => true do |t|
     t.integer "user_id"
     t.integer "role_id"
   end
@@ -193,6 +196,7 @@ ActiveRecord::Schema.define(:version => 20121207172758) do
   end
 
   add_index "videos", ["license_id"], :name => "index_videos_on_license_id"
+  add_index "videos", ["slug"], :name => "index_videos_on_slug", :unique => true
   add_index "videos", ["user_id"], :name => "index_videos_on_user_id"
 
 end
