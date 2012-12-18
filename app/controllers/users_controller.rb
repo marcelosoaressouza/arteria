@@ -3,11 +3,6 @@ class UsersController < ApplicationController
 
   before_filter :authenticate_user!
 
-  before_filter :tags
-  def tags
-    @tags = Post.tag_counts_on(:tags)
-  end
-
   before_filter :role_verify
   def role_verify
     redirect_to '/', notice: 'You dont have permission.' if ! current_user.has_role? :admin

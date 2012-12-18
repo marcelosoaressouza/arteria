@@ -1,3 +1,7 @@
+              <% @mainmenu.each do |option| %>
+                <li><%= link_to option.title, option.url %></li>
+              <% end %>
+
               <li>
                 <li class="dropdown">
                   <a id="drop1" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">
@@ -84,6 +88,7 @@
                         <li><a tabindex="-1" href="/users/">Users</a></li>
                         <li><a tabindex="-1" href="/roles/">Roles</a></li>
                         <li class="divider"></li>
+                        <li><a tabindex="-1" href="/menus/">Menus</a>
                         <li><a tabindex="-1" href="/licenses/">Licenses</a>
                         </ul>
                       </li>
@@ -92,5 +97,5 @@
 
                 <li id="logout" style="float: right; font-size: 14px;"><%= link_to(t("Logout") + " (" + current_user.firstname + ") ", destroy_user_session_path, :method => :delete) %></li>
               <% else %>
-                <li id="login" style="float: right; font-size: 14px;"><%= link_to(t("Login"), new_user_session_path)  %></li>
+                <li id="login" style="float: right; font-size: 14px;"><%= link_to(t("Login"), new_user_session_path) %></li>
               <% end %>

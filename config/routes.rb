@@ -1,4 +1,7 @@
 Arteria::Application.routes.draw do
+  resources :menus
+
+
   devise_for :users
 
   match 'tagged' => 'home#tagged', :as => 'tagged'

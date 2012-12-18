@@ -4,12 +4,6 @@ class VideosController < ApplicationController
   protect_from_forgery
   before_filter :authenticate_user!, :only => [:new, :edit, :create, :update, :destroy]
 
-  before_filter :tags
-
-  def tags
-    @tags = Video.tag_counts_on(:tags)
-  end
-
   # GET /videos
   # GET /videos.json
   def index

@@ -4,12 +4,6 @@ class AudiosController < ApplicationController
   protect_from_forgery
   before_filter :authenticate_user!, :only => [:new, :edit, :create, :update, :destroy]
 
-  before_filter :tags
-
-  def tags
-    @tags = Audio.tag_counts_on(:tags)
-  end
-
   # GET /audios
   # GET /audios.json
   def index

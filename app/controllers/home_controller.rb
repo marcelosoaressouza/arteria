@@ -1,10 +1,4 @@
 class HomeController < ApplicationController
-  before_filter :tags
-
-  def tags
-    @tags = Post.tag_counts_on(:tags)
-  end
-
   def index
     @posts = Post.all
     @images = Image.all

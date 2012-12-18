@@ -2,12 +2,6 @@ class PostsController < ApplicationController
   protect_from_forgery
   before_filter :authenticate_user!, :only => [:new, :edit, :create, :update, :destroy]
 
-  before_filter :tags
-
-  def tags
-    @tags = Post.tag_counts_on(:tags)
-  end
-
   # GET /posts/list
   # GET /posts/list.json
   def list
