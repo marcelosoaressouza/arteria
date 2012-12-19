@@ -6,9 +6,15 @@ class ApplicationController < ActionController::Base
     @tags = Audio.tag_counts_on(:tags)
   end
 
-  before_filter :menu
-  def menu
-    @mainmenu = Menu.all
+  before_filter :menus
+  def menus
+    @menu = Menu.all
+  end
+
+  before_filter :feeds
+  def feeds
+    feed_urls =  Rss.all.map(&:url)
+    @feed = Feedzirra::Feed.fetch_and_parse(feed_urls)
   end
 
   protected

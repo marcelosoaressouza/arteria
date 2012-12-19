@@ -49,3 +49,7 @@ gem 'validates_existence'
 gem 'nokogiri'
 gem 'htmlentities'
 gem 'truncate_html'
+
+gem 'gorillib'
+gem 'curb'
+gem 'feedzirra', '~> 0.2.0.rc2'

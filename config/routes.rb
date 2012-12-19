@@ -1,7 +1,4 @@
 Arteria::Application.routes.draw do
-  resources :menus
-
-
   devise_for :users
 
   match 'tagged' => 'home#tagged', :as => 'tagged'
@@ -64,6 +61,10 @@ Arteria::Application.routes.draw do
   end
 
   resources :licenses
+
+  resources :rsses
+
+  resources :menus
 
   match 'tagged' => 'home#tagged', :as => 'tagged'
 

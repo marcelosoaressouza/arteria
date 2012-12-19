@@ -12,14 +12,23 @@
                   <% end %>
                 <% end %>
 
-              <li class="nav-header" style="color: #B12C2F;">Parceiros</li>
-              <li><%= link_to "Link1", "/path1"  %></li>
-              <li><%= link_to "Link2", "/path2"  %></li>
-              <li><%= link_to "Link3", "/path3"  %></li>
+              <br/>
 
-              <li class="nav-header" style="color: #B12C2F;">RSS Feed</li>
+              <li class="nav-header" style="color: #B12C2F;">Parceiros (Feed)</li>
               <li>
-                <%= link_to "Link1", "/path1"  %>
+                <% if !@feed.nil? %>
+                  <% @feed.each do |entry| %>
+                    <% entry.each do |rss| %>
+                      <% if rss.respond_to?('title') %>
+                        <% rss.entries[0...2].each do |news| %>
+                          <%= link_to news.title, news.url, :target => "_blank" %>
+                        <% end %>
+                      <% end %>
+                    <% end %>
+                  <% end %>
+                <% else %>
+                  <b><%= t('No RSS Found') %></b>
+                <% end %>
               </li>
             </ul>
           </div>
