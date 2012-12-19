@@ -6,23 +6,26 @@
 
   <dd><%= @post.content.html_safe %></dd>
 
-  <dt><strong><%= model_class.human_attribute_name(:user_id) %>:</strong></dt>
-  <dd><%= @post.user.firstname + " " + @post.user.lastname %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:license_id) %>:</strong></dt>
-  <dd><%= @post.license.name %></dd>
+  <dl class="dl-horizontal">
+    <dt><strong><%= model_class.human_attribute_name(:user_id) %>:</strong></dt>
+    <dd><%= @post.user.firstname + " " + @post.user.lastname %></dd>
 
-  <dt><strong><%= model_class.human_attribute_name(:tags) %>:</strong></dt>
-  <dd>
-    <% @post.tags.any? %>
-        <% @post.tags.each do |tag| %>
-        <%= link_to tag.name, tagged_url(:tag => tag.name) %>
+    <dt><strong><%= model_class.human_attribute_name(:license_id) %>:</strong></dt>
+    <dd><%= @post.license.name %></dd>
+
+    <dt><strong><%= model_class.human_attribute_name(:tags) %>:</strong></dt>
+    <dd>
+      <% @post.tags.any? %>
+          <% @post.tags.each do |tag| %>
+          <%= link_to tag.name, tagged_url(:tag => tag.name) %>
+      <% end %>
+    </dd>
+
+    <% if user_signed_in? %>
+      <dt><strong><%= model_class.human_attribute_name(:published) %>:</strong></dt>
+      <dd><%= @post.published %></dd>
     <% end %>
-  </dd>
-
-  <% if user_signed_in? %>
-    <dt><strong><%= model_class.human_attribute_name(:published) %>:</strong></dt>
-  <dd><%= @post.published %></dd>
-  <% end %>
+  </dl>
 
 <% if user_signed_in? %>
   <% if current_user.has_role? :admin %>

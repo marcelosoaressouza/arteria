@@ -27,6 +27,13 @@
         <div class="accordion-inner">
           <table class="table table-striped">
             <tbody>
+              <tr>
+                <td>
+                <strong>Gallery:</strong> <%= link_to gallery.title, gallery_path(gallery), :target => '_blank' %>
+                <br/>	
+                <strong>Owner:</strong> <%= gallery.user.firstname + ' ' + gallery.user.lastname %>
+              </td>
+              </tr>
               <% gallery.items.each do |item| %>
                   <tr>
                     <td>

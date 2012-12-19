@@ -1,16 +1,16 @@
-<div class="search">
-  <%= form_tag search_posts_path, :method => :get do %>
-    <p><%= text_field_tag :query, params[:query] %> <%= submit_tag t('Search') %></p>
-  <% end %>
-</div>
+  <div class="search">
+    <%= form_tag search_posts_path, :method => :get do %>
+      <p><%= text_field_tag :query, params[:query] %> <%= submit_tag t('Search') %></p>
+    <% end %>
+  </div>
 
-<br/><br/></br>
+  <br/><br/></br>
 
-<% if @posts.empty? %>
-  <%= "<center><h3>No Content Found.</h3></center>".html_safe %>
-<% else %>
-  <center>
-	
+  <% if @posts.empty? %>
+    <%= "<center><h3>No Content Found.</h3></center>".html_safe %>
+  <% else %>
+
+  <center>	
   <%= paginate @posts, :window => 8 %>
 
   <table class="table table-striped">
@@ -18,7 +18,7 @@
       <% @posts.each do |post| %>
         <tr>
           <td style="font-weight: bold;"><%= link_to post.title, post_path(post), :style => "color: #B7181C" %></td>
-          <td><%= truncate(strip_tags(post.content), :length => 1024) %></td>
+          <td><%= truncate(strip_tags(post.content), :length => 1024, :omission => '...') %></td>
         </tr>
       <% end %>
     </tbody>

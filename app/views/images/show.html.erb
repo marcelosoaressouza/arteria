@@ -1,41 +1,52 @@
 <%- model_class = Image -%>
+
 <div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human %></h1>
+  <h3><%= @image.title %></h3>
 </div>
 
 <dl class="dl-horizontal">
-  <dt><strong><%= model_class.human_attribute_name(:title) %>:</strong></dt>
-  <dd><%= @image.title %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:slug) %>:</strong></dt>
-  <dd><%= @image.slug %></dd>
+
+  <dd><%= link_to (image_tag @image.image.url(:medium)), @image.image.url, :id => "image-box" %></dd>
+
   <dt><strong><%= model_class.human_attribute_name(:description) %>:</strong></dt>
-  <dd><%= @image.description %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:published) %>:</strong></dt>
-  <dd><%= @image.published %></dd>
+  <dd><%= @image.description %> - </dd>
+
   <dt><strong><%= model_class.human_attribute_name(:user_id) %>:</strong></dt>
-  <dd><%= @image.user_id %></dd>
+  <dd><%= @image.user.firstname + ' ' + @image.user.lastname %></dd>
+
   <dt><strong><%= model_class.human_attribute_name(:license_id) %>:</strong></dt>
-  <dd><%= @image.license_id %></dd>
+  <dd><%= @image.license.name %></dd>
+
   <dt><strong><%= model_class.human_attribute_name(:image_file_name) %>:</strong></dt>
-  <dd><%= @image.image_file_name %></dd>
+  <dd><%= link_to @image.image_file_name, @image.image.url %></dd>
+
   <dt><strong><%= model_class.human_attribute_name(:image_content_type) %>:</strong></dt>
   <dd><%= @image.image_content_type %></dd>
+
   <dt><strong><%= model_class.human_attribute_name(:image_file_size) %>:</strong></dt>
   <dd><%= @image.image_file_size %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:image_updated_at) %>:</strong></dt>
-  <dd><%= @image.image_updated_at %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:image) %>:</strong></dt>
-  <dd><%= link_to (image_tag @image.image.url(:thumb)), @image.image.url, :id => "image-box" %></dd>
+
+  <dt><strong><%= model_class.human_attribute_name(:tags) %>:</strong></dt>
+  <dd>
+    <% @image.tags.any? %>
+        <% @image.tags.each do |tag| %>
+        <%= link_to tag.name, tagged_url(:tag => tag.name) %>
+    <% end %>
+  </dd>
+
+  <% if user_signed_in? %>
+    <dt><strong><%= model_class.human_attribute_name(:published) %>:</strong></dt>
+    <dd><%= @image.published %></dd>
+  <% end %>
+
 </dl>
 
-<div class="form-actions">
-  <%= link_to t('.back', :default => t("helpers.links.back")),
-              images_path, :class => 'btn'  %>
-  <%= link_to t('.edit', :default => t("helpers.links.edit")),
-              edit_image_path(@image), :class => 'btn' %>
-  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-              image_path(@image),
-              :method => 'delete',
-              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-              :class => 'btn btn-danger' %>
-</div>
+<% if user_signed_in? %>
+  <% if current_user.has_role? :admin %>
+    <div class="form-actions">
+      <%= link_to t('.back', :default => t("helpers.links.back")), images_path, :class => 'btn'  %>
+      <%= link_to t('.edit', :default => t("helpers.links.edit")), edit_image_path(@image), :class => 'btn' %>
+      <%= link_to t('.destroy', :default => t("helpers.links.destroy")), image_path(@image), :method => 'delete', :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-danger' %>
+    </div>
+  <% end %>
+<% end %>
