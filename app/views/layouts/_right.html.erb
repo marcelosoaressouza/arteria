@@ -12,11 +12,11 @@
                   <% end %>
                 <% end %>
 
-              <br/>
+              <br/></br>
 
               <li class="nav-header" style="color: #B12C2F;">Parceiros (Feed)</li>
               <li>
-                <% if !@feed.nil? %>
+                <% if @feed.size > 0 %>
                   <% @feed.each do |entry| %>
                     <% entry.each do |rss| %>
                       <% if rss.respond_to?('title') %>
