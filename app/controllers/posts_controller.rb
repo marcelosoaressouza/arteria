@@ -1,11 +1,11 @@
 class PostsController < ApplicationController
   protect_from_forgery
-  before_filter :authenticate_user!, :only => [:new, :edit, :create, :update, :destroy]
+  before_filter :authenticate_user!, :only => [:new, :edit, :create, :update, :destroy, :list]
 
   # GET /posts/list
   # GET /posts/list.json
   def list
-    @posts = Post.order('created_at DESC').page params[:page]
+    @posts = Post.order('created_at DESC').where("posts.user_id = #{current_user.id}").page params[:page]
 
     respond_to do |format|
       format.html
@@ -59,6 +59,8 @@ class PostsController < ApplicationController
     @galleries = Gallery.all
 
     @post = Post.find(params[:id])
+
+    return false if !owner_verify(@post, post_url)
   end
 
   # POST /posts
@@ -101,6 +103,9 @@ class PostsController < ApplicationController
   # DELETE /posts/1.json
   def destroy
     @post = Post.find(params[:id])
+
+    return false if !owner_verify(@post, post_url)
+
     @post.destroy
 
     respond_to do |format|

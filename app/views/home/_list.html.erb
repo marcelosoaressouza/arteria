@@ -6,17 +6,15 @@
     <tr>
       <th>#</th>
       <th><%= model_class.human_attribute_name(:title) %></th>
-      <th><%= model_class.human_attribute_name(:user_id) %></th>
-      <th><%= model_class.human_attribute_name(:license_id) %></th>
+      <th><%= model_class.human_attribute_name(:type) %></th>
     </tr>
   </thead>
   <tbody>
     <% contents.each do |content| %>
       <tr>
         <td><%= link_to content.id %></td>
-        <td><%= content.title %></td>
-        <td><%= content.user_id %></td>
-        <td><%= content.license_id %></td>
+        <td><b><%= link_to content.title, content %></b></td>
+        <td><%= content.class %></td>
       </tr>
     <% end %>
   </tbody>

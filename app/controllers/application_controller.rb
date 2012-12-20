@@ -3,7 +3,11 @@ class ApplicationController < ActionController::Base
 
   before_filter :tags
   def tags
-    @tags = Audio.tag_counts_on(:tags)
+    @tags = Post.tag_counts_on(:tags)
+    @tags += Audio.tag_counts_on(:tags)
+    @tags += Video.tag_counts_on(:tags)
+    @tags += Image.tag_counts_on(:tags)
+    @tags = @tags.uniq
   end
 
   before_filter :menus
@@ -15,6 +19,15 @@ class ApplicationController < ActionController::Base
   def feeds
     feed_urls =  Rss.all.map(&:url)
     @feed = Feedzirra::Feed.fetch_and_parse(feed_urls)
+  end
+
+  def owner_verify(model, url)
+    if (current_user.id != model.user_id && (!current_user.has_role? :admin))
+      redirect_to url, :alert => I18n.t('Permission Denied. You\'re not the owner')
+      return false
+    end
+
+    return true
   end
 
   protected

@@ -15,6 +15,7 @@ class HomeController < ApplicationController
       @contents += Audio.tagged_with(params[:tag]).sort_by(&:id).reverse
       @contents += Video.tagged_with(params[:tag]).sort_by(&:id).reverse
       @contents += Image.tagged_with(params[:tag]).sort_by(&:id).reverse
+      @contents = @contents.uniq
     else
       @contents  = Post.all
       @contents += Audio.all
