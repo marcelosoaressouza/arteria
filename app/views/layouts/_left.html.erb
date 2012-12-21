@@ -4,9 +4,7 @@
               <a class="brand" href="/"><img src="/assets/Arteria-Logo-Small.jpg" alt="Logo Artéria Cultura e Cidadania"/></a>
               <li class="nav-header" style="color: #B12C2F;">A Artéria</li>
                 <div style="text-align: justify">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec condimentum risus non metus eleifend 
-                  iaculis. Suspendisse at dui lacus. Aenean mollis lectus ut ipsum cursus vel tempor massa accumsan. 
-                  Aenean et dui nec eros elementum tempor. Nulla malesuada mi nec nisl molestie blandit.
+                  <%= truncate(strip_tags(@about.content), :length => 1024) %>
                 </div>
             </ul>
           </div>

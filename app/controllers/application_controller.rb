@@ -21,6 +21,11 @@ class ApplicationController < ActionController::Base
     @feed = Feedzirra::Feed.fetch_and_parse(feed_urls)
   end
 
+  before_filter :about
+  def about
+    @about =  Post.find(1)
+  end
+
   def owner_verify(model, url)
     if (current_user.id != model.user_id && (!current_user.has_role? :admin))
       redirect_to url, :alert => I18n.t('Permission Denied. You\'re not the owner')
