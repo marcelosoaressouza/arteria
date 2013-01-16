@@ -43,7 +43,7 @@ $(document).ready(function() {
   });
 
   $('#arteria-carousel-posts').jcarousel({
-    animation: 3000,
+    animation: 5000,
     scroll: 1,
     wrap: 'circular',
     auto: 3

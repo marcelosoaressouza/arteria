@@ -1,17 +1,13 @@
 <%- model_class = License -%>
 
-<div class="page-header">
-  <h3><%=t '.title', :default => model_class.model_name.human.pluralize %></h3>
-</div>
+<div class="page-header"><h3><%=t '.title', :default => model_class.model_name.human.pluralize %></h3></div>
 
 <table class="table table-striped">
   <thead>
     <tr>
-      <th><%= model_class.human_attribute_name(:id) %></th>
+      <th>#</th>
       <th><%= model_class.human_attribute_name(:name) %></th>
       <th><%= model_class.human_attribute_name(:description) %></th>
-      <th><%= model_class.human_attribute_name(:user_id) %></th>
-      <th><%= model_class.human_attribute_name(:created_at) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
@@ -21,8 +17,6 @@
         <td><%= link_to license.id, license_path(license) %></td>
         <td><%= license.name %></td>
         <td><%= license.description %></td>
-        <td><%= license.user.firstname + " " + license.user.lastname %></td>
-        <td><%=l license.created_at %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")), edit_license_path(license), :class => 'btn btn-mini' %>
           <%= link_to t('.destroy', :default => t("helpers.links.destroy")), license_path(license), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-mini btn-danger' %>

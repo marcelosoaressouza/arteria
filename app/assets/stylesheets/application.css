@@ -68,3 +68,14 @@ label {
   margin-left: auto ;
   margin-right: auto ;
 }
+
+footer {
+  float: right;
+  font-size: 14px;
+}
+
+.form-actions {
+    background-color: transparent;
+    max-width: 250px;
+    border: 0px;
+}

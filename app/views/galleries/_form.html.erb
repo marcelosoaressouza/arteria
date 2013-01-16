@@ -21,7 +21,7 @@
   </div>
 
   <div class="control-group">
-    <%= f.label :license_id, :class => 'control-label' %>
+    <%= f.label :license, :class => 'control-label' %>
     <div class="controls">
       <%= f.select( :license_id, @licenses.collect { |l| [l.name, l.id] } ) %>
     </div>
