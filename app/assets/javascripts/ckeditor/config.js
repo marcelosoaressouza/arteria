@@ -71,7 +71,7 @@ CKEDITOR.editorConfig = function( config )
   
   /* Extra plugins */
   // works only with en, ru, uk locales
-  config.extraPlugins = "embed,attachment";
+  // config.extraPlugins = "embed,attachment";
   
   /* Toolbars */
   config.toolbar = 'Easy';

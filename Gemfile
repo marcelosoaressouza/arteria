@@ -15,7 +15,7 @@ gem 'uglifier', '>= 1.0.3'
 gem 'jquery-rails', '2.1.4'
 
 gem 'twitter-bootstrap-rails'
-gem 'ckeditor', '~> 3.7.3'
+gem 'ckeditor', '~> 4.0.2'
 
 # Media
 gem 'mime-types', :require => 'mime/types'

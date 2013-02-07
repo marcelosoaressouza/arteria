@@ -1,0 +1,3 @@
+== Artéria Cultura e Cidadania
+
+Website made with Ruby on Rails for NGO Artéria Cultura e Cidadania
