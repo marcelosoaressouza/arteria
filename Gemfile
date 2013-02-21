@@ -1,6 +1,11 @@
+if RUBY_VERSION =~ /1.9/
+  Encoding.default_external = Encoding::UTF_8
+  Encoding.default_internal = Encoding::UTF_8
+end
+
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.11'
+gem 'rails', '3.2.12'
 gem 'i18n'
 
 gem 'sqlite3'
@@ -13,8 +18,9 @@ gem 'therubyracer', '0.10.2' # :platforms => :ruby
 gem 'uglifier', '>= 1.0.3'
 
 gem 'jquery-rails', '2.1.4'
+gem 'jquery-ui-rails'
 
-gem 'twitter-bootstrap-rails'
+gem 'twitter-bootstrap-rails', '2.2.1'
 gem 'ckeditor', '~> 4.0.2'
 
 # Media
@@ -30,6 +36,7 @@ gem 'devise'
 gem 'devise-encryptable'
 gem 'cancan'
 gem 'rolify'
+gem 'validates_email_format_of'
 
 gem 'warden'
 gem 'friendly_id'
