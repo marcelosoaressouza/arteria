@@ -4,7 +4,7 @@
               <a class="brand" href="/"><img src="/assets/Arteria-Logo-Small.jpg" alt="Logo Artéria Cultura e Cidadania"/></a>
               <li class="nav-header" style="color: #B12C2F;">A Artéria</li>
                 <div style="text-align: justify">
-                  <%= truncate(strip_tags(@about.content), :length => 1024) %>
+                  <%= truncate(strip_tags(@about.content), :length => 1024) if ! @about.nil? %>
                 </div>
             </ul>
           </div>

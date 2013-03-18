@@ -23,7 +23,7 @@ class ApplicationController < ActionController::Base
 
   before_filter :about
   def about
-    @about =  Post.find(1)
+    @about = Post.where("title LIKE '%Sobre%'")[0]
   end
 
   def owner_verify(model, url)
