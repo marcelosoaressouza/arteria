@@ -66,6 +66,15 @@ Arteria::Application.routes.draw do
 
   resources :menus
 
+  resources :about do
+    collection do
+      get 'presentation'
+      get 'mission'
+      get 'team'
+      get 'contact'
+    end
+  end
+
   match 'tagged' => 'home#tagged', :as => 'tagged'
 
   mount Ckeditor::Engine => '/ckeditor'

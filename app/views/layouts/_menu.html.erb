@@ -5,6 +5,20 @@
               <li>
                 <li class="dropdown">
                   <a id="drop1" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">
+                    <%= I18n.t("About") %><b class="caret"></b>
+                  </a>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="drop1">
+                    <li><a tabindex="-1" href="/about/presentation"><%= I18n.t("Presentation") %></a></li>
+                    <li><a tabindex="-1" href="/about/mission"><%= I18n.t("Mission") %></a></li>
+                    <li><a tabindex="-1" href="/about/team"><%= I18n.t("Team") %></a></li>
+                    <li><a tabindex="-1" href="/about/contact"><%= I18n.t("Contact") %></a></li>
+                    </ul>
+                  </li>
+              </li>
+
+              <li>
+                <li class="dropdown">
+                  <a id="drop1" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">
                     <%= I18n.t("Galleries") %><b class="caret"></b>
                   </a>
                   <ul class="dropdown-menu" role="menu" aria-labelledby="drop1">
@@ -103,6 +117,6 @@
 
                 <li id="logout" style="float: right; font-size: 14px;"><%= link_to(t("Logout") + " (" + current_user.firstname + ") ", destroy_user_session_path, :method => :delete) %></li>
               <% else %>
-                <li><%= link_to "Mapa da Cultura", "http://mapadacultura.org" %></li>
+                <li><%= link_to "Mapa da Cultura", "https://mapadacultura.org", :target => "_blank" %></li>
                 <li id="login" style="float: right; font-size: 14px;"><%= link_to(t("Login"), new_user_session_path) %></li>
               <% end %>

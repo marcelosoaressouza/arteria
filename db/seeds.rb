@@ -21,7 +21,7 @@ user_admin.remove_role :guest
 license = License.create! :name => 'CC BY 3.0 BR',
                           :description => 'Compartilhar - copiar, distribuir e transmitir a obra. Remixar - criar obras derivadas. Fazer uso comercial da obra'
 
-about = Post.create! :title => 'About',
+about = Post.create! :title => 'Sobre',
                      :content => 'Put here something about you site...',
                      :published => true,
                      :license_id => 1,

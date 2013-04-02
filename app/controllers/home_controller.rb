@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
   def index
-    @posts = Post.all
+    @posts = Post.where("title NOT LIKE '%Sobre%'")
     @images = Image.all
 
     respond_to do |format|
