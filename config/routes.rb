@@ -72,6 +72,7 @@ Arteria::Application.routes.draw do
       get 'mission'
       get 'team'
       get 'contact'
+      get 'cartography'
     end
   end
 

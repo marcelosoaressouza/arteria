@@ -10,4 +10,7 @@ class AboutController < ApplicationController
 
   def contact
   end
+
+  def cartography
+  end
 end
