@@ -32,22 +32,37 @@
                     </ul>
                   </li>
               </li>
-<!--
+
               <li>
                 <li class="dropdown">
                   <a id="drop1" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">
-                    <%= I18n.t("Audios") %><b class="caret"></b>
+                    <%= I18n.t("Projects") %><b class="caret"></b>
                   </a>
                   <ul class="dropdown-menu" role="menu" aria-labelledby="drop1">
-                    <li><a tabindex="-1" href="/audios/"><%= I18n.t("List All") %></a></li>
-                      <% if user_signed_in? %>
-                        <li class="divider"></li>
-                        <li><a tabindex="-1" href="/audios/list"><%= I18n.t("List All My Contents") %></a></li>
-                        <li><a tabindex="-1" href="/audios/new"><%= I18n.t("Add New Content") %></a></li>
-                      <% end %>
-                    </ul>
-                  </li>
+                    <li><a tabindex="-1" target="_blank" href="https://mapadacultura.org">Mapa da Cultura</a></li>
+                    <li><a tabindex="-1" target="_blank" href="http://redecandanga.com.br">Rede Candanga</a></li>
+                  </ul>
+                </li>
               </li>
+
+              <% if user_signed_in? %>
+                <% if current_user.has_role? :admin %>
+<!--
+                  <li>
+                    <li class="dropdown">
+                      <a id="drop1" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">
+                        <%= I18n.t("Audios") %><b class="caret"></b>
+                      </a>
+                      <ul class="dropdown-menu" role="menu" aria-labelledby="drop1">
+                        <li><a tabindex="-1" href="/audios/"><%= I18n.t("List All") %></a></li>
+                          <% if user_signed_in? %>
+                            <li class="divider"></li>
+                            <li><a tabindex="-1" href="/audios/list"><%= I18n.t("List All My Contents") %></a></li>
+                            <li><a tabindex="-1" href="/audios/new"><%= I18n.t("Add New Content") %></a></li>
+                          <% end %>
+                        </ul>
+                      </li>
+                  </li>
 -->
               <li>
                 <li class="dropdown">
@@ -56,11 +71,9 @@
                   </a>
                   <ul class="dropdown-menu" role="menu" aria-labelledby="drop1">
                     <li><a tabindex="-1" href="/videos/"><%= I18n.t("List All") %></a></li>
-                      <% if user_signed_in? %>
                         <li class="divider"></li>
                         <li><a tabindex="-1" href="/videos/list"><%= I18n.t("List All My Contents") %></a></li>
                         <li><a tabindex="-1" href="/videos/new"><%= I18n.t("Add New Content") %></a></li>
-                      <% end %>
                     </ul>
                   </li>
               </li>
@@ -72,11 +85,9 @@
                   </a>
                   <ul class="dropdown-menu" role="menu" aria-labelledby="drop1">
                     <li><a tabindex="-1" href="/images/"><%= I18n.t("List All") %></a></li>
-                      <% if user_signed_in? %>
                         <li class="divider"></li>
                         <li><a tabindex="-1" href="/images/list"><%= I18n.t("List All My Contents") %></a></li>
                         <li><a tabindex="-1" href="/images/new"><%= I18n.t("Add New Content") %></a></li>
-                      <% end %>
                     </ul>
                   </li>
               </li>
@@ -88,36 +99,30 @@
                   </a>
                   <ul class="dropdown-menu" role="menu" aria-labelledby="drop1">
                     <li><a tabindex="-1" href="/posts/"><%= I18n.t("List All") %></a></li>
-                      <% if user_signed_in? %>
                         <li class="divider"></li>
                         <li><a tabindex="-1" href="/posts/list"><%= I18n.t("List All My Contents") %></a></li>
                         <li><a tabindex="-1" href="/posts/new"><%= I18n.t("Add New Content") %></a></li>
-                      <% end %>
                     </ul>
                   </li>
               </li>
 
-              <% if user_signed_in? %>
-                <% if current_user.has_role? :admin %>
-                  <li>
-                    <li class="dropdown">
-                      <a id="drop1" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">
-                        <%= I18n.t("Settings") %><b class="caret"></b>
-                      </a>
-                      <ul class="dropdown-menu" role="menu" aria-labelledby="drop1">
-                        <li><a tabindex="-1" href="/users/"><%= I18n.t("Users") %></a></li>
-                        <li><a tabindex="-1" href="/roles/"><%= I18n.t("Roles") %></a></li>
-                        <li class="divider"></li>
-                        <li><a tabindex="-1" href="/menus/"><%= I18n.t("Menus") %></a>
-                        <li><a tabindex="-1" href="/licenses/"><%= I18n.t("Licenses") %></a>
-                        <li><a tabindex="-1" href="/rsses/">RSS</a>
-                        </ul>
-                      </li>
-                  </li>
-                <% end %>
-
+              <li>
+                <li class="dropdown">
+                  <a id="drop1" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">
+                    <%= I18n.t("Settings") %><b class="caret"></b>
+                  </a>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="drop1">
+                    <li><a tabindex="-1" href="/users/"><%= I18n.t("Users") %></a></li>
+                    <li><a tabindex="-1" href="/roles/"><%= I18n.t("Roles") %></a></li>
+                    <li class="divider"></li>
+                    <li><a tabindex="-1" href="/menus/"><%= I18n.t("Menus") %></a>
+                    <li><a tabindex="-1" href="/licenses/"><%= I18n.t("Licenses") %></a>
+                    <li><a tabindex="-1" href="/rsses/">RSS</a>
+                  </ul>
+                </li>
+              </li>
+              <% end %>
                 <li id="logout" style="float: right; font-size: 14px;"><%= link_to(t("Logout") + " (" + current_user.firstname + ") ", destroy_user_session_path, :method => :delete) %></li>
               <% else %>
-                <li><%= link_to "Mapa da Cultura", "https://mapadacultura.org", :target => "_blank" %></li>
                 <li id="login" style="float: right; font-size: 14px;"><%= link_to(t("Login"), new_user_session_path) %></li>
               <% end %>
